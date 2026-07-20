@@ -1,0 +1,39 @@
+generated: '2026-07-19'
+method: searched
+source: https://docs.gradium.ai/guides/installation, https://docs.gradium.ai/guides/browser-websockets, https://docs.gradium.ai/guides/errors
+docs: https://docs.gradium.ai/api-reference/introduction
+note: >-
+  The published OpenAPI (openapi/gradium-openapi-original.json) declares no
+  components.securitySchemes; the authentication model below is captured from
+  the Gradium docs, not derived from the spec.
+summary:
+  types: [apiKey, bearer-token]
+  api_key_in: [header]
+  api_key_header: x-api-key
+  api_key_prefix: gd_
+  oauth2_flows: []
+schemes:
+- name: ApiKeyAuth
+  type: apiKey
+  in: header
+  parameter: x-api-key
+  key_prefix: gd_
+  env_var: GRADIUM_API_KEY
+  applies_to: All REST endpoints and server-to-server calls.
+  source: https://docs.gradium.ai/guides/installation
+- name: ShortLivedToken
+  type: token-exchange
+  description: >-
+    For browser/mobile WebSocket clients, exchange the server-side API key for a
+    single-use, short-lived token via GET https://api.gradium.ai/api/api-keys/token
+    (x-api-key header). The client connects to the WebSocket endpoint with
+    ?token=<token>. Token is consumed on verification; issue one per connection.
+  token_endpoint: https://api.gradium.ai/api/api-keys/token
+  transport: query-parameter (?token=)
+  applies_to: WebSocket endpoints (/api/speech/tts, /api/speech/asr, /api/speech/s2s)
+  source: https://docs.gradium.ai/guides/browser-websockets
+errors:
+  invalid_or_revoked_key:
+    code: 1008
+    rest: "HTTP 500 plain-text body 'error from server 1008: API key is revoked or expired'"
+    websocket: 'error message {"type":"error","message":"...","code":1008} then socket close'
