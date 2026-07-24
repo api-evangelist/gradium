@@ -1,0 +1,68 @@
+openapi: 3.1.0
+info:
+  title: Gradium metering API
+  description: "This documentation covers the Gradium API.\n\nThis API exposes our Text-To-Speech and Speech-To-Text models, which offers low-latency, high-quality & natural sounding output and best in class accuracy.  \n\nFor issues, questions, or feature requests, please contact us at support@gradium.ai"
+  version: 0.1.0
+servers:
+- url: https://api.gradium.ai/api
+  description: Gradium API
+tags:
+- name: metering
+paths:
+  /usages/credits:
+    get:
+      tags:
+      - metering
+      summary: Get Credits
+      description: Get current credit balance for the authenticated user's subscription.
+      operationId: get_credits_usages_credits_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreditsSummary'
+components:
+  schemas:
+    CreditsSummary:
+      properties:
+        remaining_credits:
+          type: integer
+          title: Remaining Credits
+        allocated_credits:
+          type: integer
+          title: Allocated Credits
+        billing_period:
+          type: string
+          title: Billing Period
+        next_rollover_date:
+          anyOf:
+          - type: string
+            format: date
+          - type: 'null'
+          title: Next Rollover Date
+        plan_name:
+          type: string
+          title: Plan Name
+          default: ''
+      type: object
+      required:
+      - remaining_credits
+      - allocated_credits
+      - billing_period
+      title: CreditsSummary
+      description: Summary of credits for current billing period.
+x-tagGroups:
+- name: Documentation
+  tags:
+  - Documentation
+  - FAQ
+  - Release notes
+- name: API Reference
+  tags:
+  - TTS
+  - STT
+  - Voices
+  - Pronunciations
+  - Credits

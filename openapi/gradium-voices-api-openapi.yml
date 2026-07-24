@@ -1,0 +1,429 @@
+openapi: 3.1.0
+info:
+  title: Gradium metering Voices API
+  description: "This documentation covers the Gradium API.\n\nThis API exposes our Text-To-Speech and Speech-To-Text models, which offers low-latency, high-quality & natural sounding output and best in class accuracy.  \n\nFor issues, questions, or feature requests, please contact us at support@gradium.ai"
+  version: 0.1.0
+servers:
+- url: https://api.gradium.ai/api
+  description: Gradium API
+tags:
+- name: Voices
+  description: Manage custom voice clones
+paths:
+  /voices/:
+    post:
+      tags:
+      - Voices
+      summary: Create Voice
+      description: Create a new voice for an organization with audio file upload.
+      operationId: create_voice_voices__post
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Body_create_voice_voices__post'
+      responses:
+        '201':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VoiceCreateResponse'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+    get:
+      tags:
+      - Voices
+      summary: Get Voices
+      description: List voices for the authenticated organization.
+      operationId: get_voices_voices__get
+      parameters:
+      - name: skip
+        in: query
+        required: false
+        schema:
+          type: integer
+          minimum: 0
+          default: 0
+          title: Skip
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: integer
+          minimum: 0
+          default: 100
+          title: Limit
+      - name: include_catalog
+        in: query
+        required: false
+        schema:
+          type: boolean
+          default: false
+          title: Include Catalog
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/APIVoiceResponse'
+                title: Response Get Voices Voices  Get
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /voices/{voice_uid}:
+    get:
+      tags:
+      - Voices
+      summary: Get Voice
+      description: Get a voice by its UID. Optional org_uid and key_uid for access control.
+      operationId: get_voice_voices__voice_uid__get
+      parameters:
+      - name: voice_uid
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Voice Uid
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIVoiceResponse'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+    put:
+      tags:
+      - Voices
+      summary: Update Voice
+      description: Update a voice by its UID.
+      operationId: update_voice_voices__voice_uid__put
+      parameters:
+      - name: voice_uid
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Voice Uid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VoiceUpdate'
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VoiceResponse'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+    delete:
+      tags:
+      - Voices
+      summary: Delete Voice
+      description: Delete a voice by its UID.
+      operationId: delete_voice_voices__voice_uid__delete
+      parameters:
+      - name: voice_uid
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Voice Uid
+      responses:
+        '204':
+          description: Successful Response
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+components:
+  schemas:
+    VoiceUpdate:
+      properties:
+        name:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Name
+        description:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Description
+        language:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Language
+        start_s:
+          anyOf:
+          - type: number
+          - type: 'null'
+          title: Start S
+        tags:
+          anyOf:
+          - items:
+              additionalProperties:
+                anyOf:
+                - type: string
+                - type: boolean
+                - type: 'null'
+              type: object
+            type: array
+          - type: 'null'
+          title: Tags
+        rank:
+          anyOf:
+          - type: number
+          - type: 'null'
+          title: Rank
+      type: object
+      title: VoiceUpdate
+      description: Schema for updating voice data.
+    APIVoiceResponse:
+      properties:
+        uid:
+          type: string
+          title: Uid
+        name:
+          type: string
+          title: Name
+        description:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Description
+        filename:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Filename
+        start_s:
+          anyOf:
+          - type: number
+          - type: 'null'
+          title: Start S
+        is_catalog:
+          type: boolean
+          title: Is Catalog
+        is_pro_clone:
+          type: boolean
+          title: Is Pro Clone
+        language:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Language
+        tags:
+          items:
+            $ref: '#/components/schemas/ExportedTag'
+          type: array
+          title: Tags
+          default: []
+      type: object
+      required:
+      - uid
+      - name
+      - is_catalog
+      - is_pro_clone
+      title: APIVoiceResponse
+      description: The response sent to the user in the API for external user.
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+    ExportedTag:
+      properties:
+        category:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Category
+        value:
+          type: string
+          title: Value
+      type: object
+      required:
+      - value
+      title: ExportedTag
+      description: 'Tag exported in the public API.
+
+
+        Hidden is used for filtering but not serialized.'
+    VoiceResponse:
+      properties:
+        uid:
+          type: string
+          title: Uid
+        name:
+          type: string
+          title: Name
+        description:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Description
+        language:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Language
+        start_s:
+          type: number
+          title: Start S
+        stop_s:
+          anyOf:
+          - type: number
+          - type: 'null'
+          title: Stop S
+        filename:
+          type: string
+          title: Filename
+        org_uid:
+          anyOf:
+          - type: string
+            format: uuid
+          - type: 'null'
+          title: Org Uid
+        is_pending:
+          type: boolean
+          title: Is Pending
+          default: false
+        has_audio:
+          type: boolean
+          title: Has Audio
+          default: true
+        is_pro_clone:
+          type: boolean
+          title: Is Pro Clone
+          default: false
+      type: object
+      required:
+      - uid
+      - name
+      - start_s
+      - filename
+      title: VoiceResponse
+      description: Schema for voice response data.
+    Body_create_voice_voices__post:
+      properties:
+        audio_file:
+          type: string
+          format: binary
+          title: Audio File
+        name:
+          type: string
+          title: Name
+        input_format:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Input Format
+          description: Audio format. If omitted, inferred from the audio_file extension.
+        description:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Description
+        language:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Language
+        start_s:
+          type: number
+          title: Start S
+          default: 0
+        timeout_s:
+          type: number
+          title: Timeout S
+          default: 10
+      type: object
+      required:
+      - audio_file
+      - name
+      title: Body_create_voice_voices__post
+    VoiceCreateResponse:
+      properties:
+        uid:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Uid
+        error:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Error
+        was_updated:
+          type: boolean
+          title: Was Updated
+          default: false
+      type: object
+      title: VoiceCreateResponse
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+x-tagGroups:
+- name: Documentation
+  tags:
+  - Documentation
+  - FAQ
+  - Release notes
+- name: API Reference
+  tags:
+  - TTS
+  - STT
+  - Voices
+  - Pronunciations
+  - Credits

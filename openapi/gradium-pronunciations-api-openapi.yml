@@ -1,0 +1,355 @@
+openapi: 3.1.0
+info:
+  title: Gradium metering Pronunciations API
+  description: "This documentation covers the Gradium API.\n\nThis API exposes our Text-To-Speech and Speech-To-Text models, which offers low-latency, high-quality & natural sounding output and best in class accuracy.  \n\nFor issues, questions, or feature requests, please contact us at support@gradium.ai"
+  version: 0.1.0
+servers:
+- url: https://api.gradium.ai/api
+  description: Gradium API
+tags:
+- name: Pronunciations
+  description: Manage pronunciation dictionaries for custom text rewriting
+paths:
+  /pronunciations/:
+    post:
+      tags:
+      - Pronunciations
+      summary: Create Pronunciation Dictionary
+      description: Create a pronunciation dictionary for the authenticated organization.
+      operationId: create_pronunciation_dictionary_pronunciations__post
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PronunciationDictionaryCreate'
+      responses:
+        '201':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PronunciationDictionaryResponse'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+    get:
+      tags:
+      - Pronunciations
+      summary: List Pronunciation Dictionaries
+      description: List pronunciation dictionaries for the authenticated organization.
+      operationId: list_pronunciation_dictionaries_pronunciations__get
+      parameters:
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: integer
+          maximum: 1000
+          minimum: 0
+          default: 100
+          title: Limit
+      - name: offset
+        in: query
+        required: false
+        schema:
+          type: integer
+          minimum: 0
+          default: 0
+          title: Offset
+      - name: language
+        in: query
+        required: false
+        schema:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Language
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PronunciationDictionaryListResponse'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /pronunciations/{uid}:
+    get:
+      tags:
+      - Pronunciations
+      summary: Get Pronunciation Dictionary
+      description: Get a pronunciation dictionary by its UID.
+      operationId: get_pronunciation_dictionary_pronunciations__uid__get
+      parameters:
+      - name: uid
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Uid
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PronunciationDictionaryResponse'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+    put:
+      tags:
+      - Pronunciations
+      summary: Update Pronunciation Dictionary
+      description: Update a pronunciation dictionary by its UID.
+      operationId: update_pronunciation_dictionary_pronunciations__uid__put
+      parameters:
+      - name: uid
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Uid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PronunciationDictionaryUpdate'
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PronunciationDictionaryResponse'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+    delete:
+      tags:
+      - Pronunciations
+      summary: Delete Pronunciation Dictionary
+      description: Delete a pronunciation dictionary by its UID.
+      operationId: delete_pronunciation_dictionary_pronunciations__uid__delete
+      parameters:
+      - name: uid
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Uid
+      responses:
+        '204':
+          description: Successful Response
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+components:
+  schemas:
+    PronunciationDictionaryListResponse:
+      properties:
+        dictionaries:
+          items:
+            $ref: '#/components/schemas/PronunciationDictionaryResponse'
+          type: array
+          title: Dictionaries
+        total:
+          type: integer
+          title: Total
+      type: object
+      required:
+      - dictionaries
+      - total
+      title: PronunciationDictionaryListResponse
+      description: Pronunciation dictionary list response schema.
+    PronunciationDictionaryCreate:
+      properties:
+        name:
+          type: string
+          title: Name
+        description:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Description
+        language:
+          type: string
+          title: Language
+        rules:
+          items:
+            $ref: '#/components/schemas/PronunciationRuleCreate'
+          type: array
+          title: Rules
+          default: []
+      type: object
+      required:
+      - name
+      - language
+      title: PronunciationDictionaryCreate
+      description: Pronunciation dictionary create schema.
+    PronunciationDictionaryUpdate:
+      properties:
+        name:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Name
+        description:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Description
+        language:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Language
+        rules:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/PronunciationRuleCreate'
+            type: array
+          - type: 'null'
+          title: Rules
+      type: object
+      title: PronunciationDictionaryUpdate
+      description: Pronunciation dictionary update schema.
+    PronunciationDictionaryResponse:
+      properties:
+        name:
+          type: string
+          title: Name
+        description:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Description
+        language:
+          type: string
+          title: Language
+        uid:
+          type: string
+          title: Uid
+        org_uid:
+          type: string
+          format: uuid
+          title: Org Uid
+        created_at:
+          type: string
+          format: date-time
+          title: Created At
+        rules:
+          items:
+            $ref: '#/components/schemas/PronunciationRuleResponse'
+          type: array
+          title: Rules
+          default: []
+      type: object
+      required:
+      - name
+      - language
+      - uid
+      - org_uid
+      - created_at
+      title: PronunciationDictionaryResponse
+      description: Pronunciation dictionary response schema.
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+    PronunciationRuleResponse:
+      properties:
+        original:
+          type: string
+          title: Original
+        rewrite:
+          type: string
+          title: Rewrite
+        case_sensitive:
+          type: boolean
+          title: Case Sensitive
+          default: false
+        id:
+          type: integer
+          title: Id
+      type: object
+      required:
+      - original
+      - rewrite
+      - id
+      title: PronunciationRuleResponse
+      description: Pronunciation rule response schema.
+    PronunciationRuleCreate:
+      properties:
+        original:
+          type: string
+          title: Original
+        rewrite:
+          type: string
+          title: Rewrite
+        case_sensitive:
+          type: boolean
+          title: Case Sensitive
+          default: false
+      type: object
+      required:
+      - original
+      - rewrite
+      title: PronunciationRuleCreate
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+x-tagGroups:
+- name: Documentation
+  tags:
+  - Documentation
+  - FAQ
+  - Release notes
+- name: API Reference
+  tags:
+  - TTS
+  - STT
+  - Voices
+  - Pronunciations
+  - Credits
