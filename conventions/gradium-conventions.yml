@@ -1,0 +1,54 @@
+generated: '2026-07-19'
+method: searched
+source: >-
+  https://docs.gradium.ai/api-reference/introduction, https://docs.gradium.ai/guides/errors,
+  https://docs.gradium.ai/guides/limits, openapi/gradium-openapi-original.json
+authentication:
+  style: api-key-header
+  header: x-api-key
+  key_prefix: gd_
+  browser: short-lived single-use token via GET /api/api-keys/token, passed as ?token= on the WebSocket
+  see: authentication/gradium-authentication.yml
+idempotency:
+  supported: false
+  note: No Idempotency-Key header or idempotent-retry contract is documented for Gradium REST CRUD or streaming endpoints.
+pagination:
+  supported: true
+  styles:
+  - resource: voices
+    style: skip/limit
+    params: [skip, limit, include_catalog]
+  - resource: pronunciations
+    style: offset/limit
+    params: [limit, offset, language]
+  note: Pagination style differs per collection (voices use skip; pronunciations use offset).
+versioning:
+  style: model-pinning
+  field: model_name
+  see: lifecycle/gradium-lifecycle.yml
+error_envelope:
+  rest_pre_stream: "HTTP 500 plain text ('error from server <code>: <reason>')"
+  rest_in_stream: '{"type":"error","message":"..."}'
+  websocket: '{"type":"error","message":"...","code":<code>}'
+  validation: HTTP 422 with a ValidationError array (HTTPValidationError schema)
+  see: errors/gradium-error-codes.yml
+metering:
+  model: credits
+  rates:
+    tts: 1 credit per character (~750 chars/min, ~45,000 credits/hour)
+    stt: 3 credits per second
+    stt_translation: 4 credits per second
+    s2s_translation: 30 credits per second
+  balance_endpoint: GET /usages/credits (operationId get_credits_usages_credits_get)
+  docs: https://docs.gradium.ai/guides/credits
+rate_limiting:
+  session_max_seconds: 300
+  concurrency: plan-dependent (contact support@gradium.ai)
+  signaling: Not documented as response headers; enforced via session limits and plan concurrency.
+  docs: https://docs.gradium.ai/guides/limits
+streaming:
+  transports: [websocket, http-post-stream]
+  websocket_endpoints: [/api/speech/tts, /api/speech/asr, /api/speech/s2s]
+  lifecycle: setup -> ready -> input (text/audio) -> flush -> end_of_stream -> close
+  multiplexing: multiple independent requests over one WebSocket connection
+  see: asyncapi/gradium-speech-asyncapi.yml

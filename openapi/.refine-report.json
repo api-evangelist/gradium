@@ -1,0 +1,24 @@
+{
+  "provider": "gradium",
+  "sources": [
+    "gradium-metering-api-openapi.yml",
+    "gradium-pronunciations-api-openapi.yml",
+    "gradium-s2s-api-openapi.yml",
+    "gradium-stt-api-openapi.yml",
+    "gradium-tts-api-openapi.yml",
+    "gradium-voices-api-openapi.yml"
+  ],
+  "outputs": [
+    "gradium-metering-api-openapi.yml",
+    "gradium-pronunciations-api-openapi.yml",
+    "gradium-s2s-api-openapi.yml",
+    "gradium-stt-api-openapi.yml",
+    "gradium-tts-api-openapi.yml",
+    "gradium-voices-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

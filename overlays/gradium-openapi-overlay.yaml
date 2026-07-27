@@ -1,0 +1,31 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Gradium API
+  version: 1.0.0
+extends: openapi/gradium-openapi-original.json
+actions:
+- target: $.info
+  update:
+    x-apievangelist-provider: gradium
+    x-apievangelist-category: voice-ai
+    x-apievangelist-auth: api-key (x-api-key header, gd_ prefix) + short-lived WebSocket token
+    x-apievangelist-docs: https://docs.gradium.ai/
+    x-apievangelist-error-codes: errors/gradium-error-codes.yml
+    x-apievangelist-conventions: conventions/gradium-conventions.yml
+- target: $.servers
+  update:
+    - url: https://api.gradium.ai/api
+      description: Gradium REST API
+    - url: wss://api.gradium.ai/api
+      description: Gradium real-time WebSocket API (TTS/STT/S2S streaming)
+- target: $.components
+  update:
+    securitySchemes:
+      ApiKeyAuth:
+        type: apiKey
+        in: header
+        name: x-api-key
+        description: >-
+          Gradium API key (gd_ prefix). Documented in the Gradium developer docs but
+          absent from the published OpenAPI; added here by API Evangelist so the auth
+          model is machine-readable.

@@ -1,0 +1,28 @@
+generated: '2026-07-19'
+method: derived
+source: openapi/gradium-openapi-original.json, https://docs.gradium.ai/guides/errors, https://docs.gradium.ai/guides/browser-websockets
+standards:
+- id: openapi-3.1
+  conforms: true
+  evidence: openapi field "3.1.0" in the published spec
+- id: apikey-auth
+  conforms: true
+  evidence: x-api-key header documented; all REST calls authenticated by API key
+- id: oauth2
+  conforms: false
+  evidence: no oauth2 securityScheme; API-key + short-lived token model only
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: errors use plain-text (REST pre-stream) and custom JSON envelopes, not application/problem+json
+- id: rfc6455-websocket
+  conforms: true
+  evidence: real-time TTS/STT/S2S over WebSocket (/api/speech/*), with setup/ready/flush/end_of_stream lifecycle and 1008/1011 close codes
+- id: pagination
+  conforms: true
+  evidence: voices skip/limit and pronunciations offset/limit query parameters
+- id: rfc8594-sunset
+  conforms: false
+  evidence: model phase-out documented as policy prose; no Sunset/Deprecation HTTP headers documented
+- id: idempotency
+  conforms: false
+  evidence: no Idempotency-Key contract documented

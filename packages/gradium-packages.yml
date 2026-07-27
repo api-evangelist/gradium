@@ -1,0 +1,29 @@
+generated: '2026-07-19'
+method: searched
+source: https://pypi.org/pypi/gradium/json, https://crates.io/crates/gradium, https://github.com/gradium-ai
+packages:
+- language: python
+  registry: pypi
+  name: gradium
+  url: https://pypi.org/project/gradium/
+  install: pip install gradium
+  repository: https://github.com/gradium-ai/gradium-py
+  version: 0.6.2
+  official: true
+  description: Python client for the Gradium Voice AI API (async TTS/STT/S2S over REST and WebSocket); ships the `gradium` CLI.
+- language: rust
+  registry: crates.io
+  name: gradium
+  url: https://crates.io/crates/gradium
+  install: cargo add gradium
+  repository: https://github.com/gradium-ai/gradium-rs
+  official: true
+  description: Rust client library for the Gradium Voice AI TTS/STT/S2S WebSocket and REST API.
+- language: rust
+  registry: github
+  name: gradbot
+  url: https://github.com/gradium-ai/gradbot
+  install: cargo install --git https://github.com/gradium-ai/gradbot
+  repository: https://github.com/gradium-ai/gradbot
+  official: true
+  description: Open-source framework to prototype voice agents on Gradium APIs (not a client SDK, an agent framework).

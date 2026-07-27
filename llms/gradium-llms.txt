@@ -1,0 +1,75 @@
+# Gradium API
+
+> Developer documentation for Gradium's low-latency Text-to-Speech and Speech-to-Text APIs, including SDK guides, WebSocket streaming, REST endpoints, voices, and pronunciation tools.
+
+## Docs
+
+- [Create Pronunciation Dictionary](https://docs.gradium.ai/api-reference/endpoint/create-pronunciation.md): Create a Gradium pronunciation dictionary with language-specific rewrite rules.
+- [Create Voice](https://docs.gradium.ai/api-reference/endpoint/create-voice.md): Create a custom Gradium voice from an uploaded audio sample.
+- [Delete Pronunciation Dictionary](https://docs.gradium.ai/api-reference/endpoint/delete-pronunciation.md): Delete a Gradium pronunciation dictionary by UID.
+- [Delete Voice](https://docs.gradium.ai/api-reference/endpoint/delete-voice.md): Delete a custom Gradium voice by voice UID.
+- [Get Credits](https://docs.gradium.ai/api-reference/endpoint/get-credits.md): Get the current Gradium credit balance for the authenticated subscription.
+- [Get Pronunciation Dictionary](https://docs.gradium.ai/api-reference/endpoint/get-pronunciation.md): Retrieve a Gradium pronunciation dictionary and its rewrite rules by UID.
+- [Get Voice](https://docs.gradium.ai/api-reference/endpoint/get-voice.md): Retrieve metadata for a Gradium voice by voice UID.
+- [Get Voices](https://docs.gradium.ai/api-reference/endpoint/get-voices.md): List Gradium voices available to the authenticated organization.
+- [List Pronunciation Dictionaries](https://docs.gradium.ai/api-reference/endpoint/list-pronunciations.md): List pronunciation dictionaries for the authenticated Gradium organization.
+- [S2S WebSocket Stream](https://docs.gradium.ai/api-reference/endpoint/s2s-websocket.md): Stream audio in and audio out over a single Gradium speech-to-speech WebSocket: transcribe, optionally translate, and re-synthesize in real time.
+- [STT POST Endpoint](https://docs.gradium.ai/api-reference/endpoint/stt-post.md): Transcribe a complete audio file with Gradium speech-to-text over HTTP POST.
+- [STT WebSocket Stream](https://docs.gradium.ai/api-reference/endpoint/stt-websocket.md): Stream audio to Gradium speech-to-text over WebSocket for real-time transcription.
+- [TTS POST Endpoint](https://docs.gradium.ai/api-reference/endpoint/tts-post.md): Generate text-to-speech audio from a complete text block with HTTP POST.
+- [TTS WebSocket Stream](https://docs.gradium.ai/api-reference/endpoint/tts-websocket.md): Stream real-time Gradium text-to-speech audio over WebSocket.
+- [Update Pronunciation Dictionary](https://docs.gradium.ai/api-reference/endpoint/update-pronunciation.md): Update a Gradium pronunciation dictionary and its rewrite rules.
+- [Update Voice](https://docs.gradium.ai/api-reference/endpoint/update-voice.md): Update metadata for an existing custom Gradium voice.
+- [API Reference](https://docs.gradium.ai/api-reference/introduction.md): Gradium API endpoints for Text-to-Speech, Speech-to-Text, Voices, Pronunciations, and Metering
+- [Browser WebSockets](https://docs.gradium.ai/guides/browser-websockets.md): Use short-lived tokens for browser and mobile WebSocket clients without exposing API keys
+- [Credits](https://docs.gradium.ai/guides/credits.md): Monitor and manage your API credit balance
+- [Errors](https://docs.gradium.ai/guides/errors.md): How errors are reported across REST, WebSocket, and streamed responses
+- [FAQ](https://docs.gradium.ai/guides/faq.md): Frequently asked questions about the Gradium API
+- [Installation](https://docs.gradium.ai/guides/installation.md): Install the Gradium Python SDK and get started
+- [Introduction](https://docs.gradium.ai/guides/introduction.md): Low-latency, high-quality Text-to-Speech and Speech-to-Text API
+- [Limits](https://docs.gradium.ai/guides/limits.md): Session duration, character limits, audio formats, and concurrency
+- [Migrate from Cartesia](https://docs.gradium.ai/guides/migration/cartesia.md): Move Cartesia TTS and STT integrations to Gradium by changing endpoints, auth, and request fields.
+- [Migrate from Deepgram](https://docs.gradium.ai/guides/migration/deepgram.md): Replace Deepgram speech integrations with Gradium STT and TTS endpoints.
+- [Migrate from ElevenLabs](https://docs.gradium.ai/guides/migration/elevenlabs.md): Replace ElevenLabs TTS calls with Gradium REST and WebSocket endpoints.
+- [Migrate to Gradium](https://docs.gradium.ai/guides/migration/index.md): Move existing voice API integrations to Gradium with minimal code changes.
+- [Multiplexing](https://docs.gradium.ai/guides/multiplexing.md): Send multiple independent requests over a single WebSocket connection
+- [Browser Microphone to STT](https://docs.gradium.ai/guides/recipes/browser-microphone-stt.md): Capture microphone audio in a browser and stream it to Gradium STT
+- [LLM Tokens to Streaming TTS](https://docs.gradium.ai/guides/recipes/llm-to-tts.md): Stream generated text into TTS while preserving prosody and low latency
+- [Telephony Audio Formats](https://docs.gradium.ai/guides/recipes/telephony-audio.md): Use mu-law, A-law, and low-sample-rate PCM with Gradium voice APIs
+- [Turn-Taking with Semantic VAD](https://docs.gradium.ai/guides/recipes/turn-taking.md): Use STT semantic VAD and adaptive delay to decide when a user has finished speaking
+- [Release Notes](https://docs.gradium.ai/guides/release-notes.md): Latest updates and improvements to the Gradium API
+- [Speech-to-Speech (WebSocket)](https://docs.gradium.ai/guides/speech-to-speech.md): Real-time speech translation over WebSocket: transcribe, translate, and re-synthesize
+- [Speech-to-Speech Overview](https://docs.gradium.ai/guides/speech-to-speech-overview.md): What Speech-to-Speech does and how to set it up
+- [Speech-to-Speech Settings](https://docs.gradium.ai/guides/speech-to-speech-settings.md): Configure S2S: voice, translation target, inner models, and audio formats
+- [Speech-to-Text (WebSocket)](https://docs.gradium.ai/guides/speech-to-text.md): Real-time speech-to-text streaming over WebSocket with semantic VAD and flush
+- [Speech-to-Text Overview](https://docs.gradium.ai/guides/speech-to-text-overview.md): When to use the WebSocket API vs the REST endpoint, and how the pieces fit together
+- [Speech-to-Text (REST)](https://docs.gradium.ai/guides/speech-to-text-rest.md): One-shot transcription of complete audio files via HTTP POST
+- [Text Rewriting Rules](https://docs.gradium.ai/guides/text-rewriting.md): Normalize and expand text patterns for better TTS pronunciation
+- [Text-to-Speech (WebSocket)](https://docs.gradium.ai/guides/text-to-speech.md): Convert text to natural-sounding speech via the Gradium SDK and WebSocket
+- [Text-to-Speech Overview](https://docs.gradium.ai/guides/text-to-speech-overview.md): When to use the WebSocket API vs the REST endpoint, and how the pieces fit together
+- [Text-to-Speech (REST)](https://docs.gradium.ai/guides/text-to-speech-rest.md): One-shot synthesis of a complete text block via HTTP POST
+- [Transcription Settings](https://docs.gradium.ai/guides/transcription-settings.md): Fine-tune STT: language, temperature, latency vs. quality tradeoffs
+- [Voice Settings](https://docs.gradium.ai/guides/voice-settings.md): Fine-tune TTS output: speed, temperature, voice similarity, rewrite rules
+- [Custom Voices](https://docs.gradium.ai/guides/voices/custom-voices.md): Clone your own voice using a short audio sample
+- [Flagship Voices](https://docs.gradium.ai/guides/voices/flagship-voices.md): Our top curated voices across multiple languages
+- [Manage Voices](https://docs.gradium.ai/guides/voices/manage-voices.md): List, update, and delete your custom voices
+- [Overview](https://docs.gradium.ai/guides/voices/overview.md): Explore the Gradium voice library
+- [WebSocket Lifecycle](https://docs.gradium.ai/guides/websocket-lifecycle.md): Connection setup, ready messages, input, flush, end-of-stream, multiplexing, and errors
+- [WebSocket Stream Options](https://docs.gradium.ai/guides/websocket-stream-options.md): Connection initialisation flags shared by tts_realtime and stt_realtime
+- [Gradium API Documentation](https://docs.gradium.ai/index.md): Build voice apps with Gradium's low-latency Text-to-Speech and Speech-to-Text APIs, SDK guides, streaming examples, voices, and pronunciation tools.
+- [Gradbot](https://docs.gradium.ai/integrations/agent-frameworks/gradbot.md): Prototype voice agents quickly with Gradium APIs
+- [LiveKit](https://docs.gradium.ai/integrations/agent-frameworks/livekit.md): Use Gradium speech models in LiveKit Agents
+- [OpenClaw](https://docs.gradium.ai/integrations/agent-frameworks/openclaw.md): Use Gradium text-to-speech in OpenClaw agents
+- [Pipecat](https://docs.gradium.ai/integrations/agent-frameworks/pipecat.md): Use Gradium streaming text-to-speech in Pipecat voice agents
+- [Integrations](https://docs.gradium.ai/integrations/index.md): Connect Gradium voice applications to tools, data sources, and agent workflows
+- [Keenable](https://docs.gradium.ai/integrations/web-search/keenable.md): Use Keenable realtime web search with Gradium voice AI agents
+- [Linkup](https://docs.gradium.ai/integrations/web-search/linkup.md): Use Linkup web search with Gradium voice AI agents
+- [Tavily](https://docs.gradium.ai/integrations/web-search/tavily.md): Use Tavily web search with Gradium voice AI agents
+
+## OpenAPI Specs
+
+- [openapi](https://docs.gradium.ai/api-reference/openapi.json)
+
+## Optional
+
+- [Support](mailto:support@gradium.ai)

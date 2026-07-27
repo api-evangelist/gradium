@@ -1,0 +1,40 @@
+generated: '2026-07-19'
+method: searched
+source: https://docs.gradium.ai/guides/errors
+format: custom
+note: >-
+  Gradium does not use RFC 9457 application/problem+json. Errors are reported per
+  transport: REST pre-stream failures return HTTP 500 with a plain-text body;
+  in-stream and WebSocket failures return a JSON error message carrying a numeric
+  Gradium/WebSocket close code. The numeric codes are shared across REST and WebSocket.
+envelopes:
+- transport: rest-pre-stream
+  http_status: 500
+  content_type: text/plain
+  shapes:
+  - 'error from server <code>: <reason>   # upstream/auth/worker rejection'
+  - "<raw error string>                    # proxy-level rejection, e.g. unsupported content type for SST 'audio/mpeg'"
+- transport: rest-in-stream
+  http_status: 200
+  content_type: application/json (TTS when only_audio=false) / application/x-ndjson (STT)
+  shape: '{"type": "error", "message": "Error description"}'
+  note: Connection terminates after the error line.
+- transport: websocket
+  shape: '{"type": "error", "message": "Error description", "code": 1008}'
+  note: Server sends the error message then closes the socket; reconnect to retry.
+codes:
+- code: 1008
+  meaning: >-
+    Policy violation. Causes include invalid/missing/revoked API key, missing or
+    malformed setup message, sending data before setup, or an invalid/unsupported
+    audio format.
+  remediation: >-
+    Generate a new API key in the Gradium dashboard and set the x-api-key header;
+    send a valid setup message before any audio/text; use a supported audio format.
+- code: 1011
+  meaning: Internal server error. The session ended due to an unexpected server-side failure.
+  remediation: Retry on a new connection; contact support@gradium.ai if it persists.
+validation:
+  http_status: 422
+  schema: HTTPValidationError
+  note: REST CRUD endpoints (voices, pronunciations) return 422 with a ValidationError array on malformed request bodies.

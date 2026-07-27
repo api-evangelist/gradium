@@ -1,0 +1,46 @@
+generated: '2026-07-19'
+method: derived
+status: candidate
+source: openapi/gradium-openapi-original.json
+note: >-
+  No official hosted/remote Gradium MCP server was found (checked docs, GitHub org
+  gradium-ai, and MCP registries as of 2026-07-19). The tool list below is a
+  candidate derived one-to-one from the REST OpenAPI operations. Streaming
+  TTS/STT/S2S (WebSocket) endpoints are excluded as they are not request/response tools.
+server:
+  name: gradium
+  transport: http
+tools:
+- name: list_voices
+  description: List Gradium voices available to the authenticated organization.
+  source_operation: openapi/gradium-openapi-original.json#get_voices_voices__get
+- name: create_voice
+  description: Create a custom Gradium voice from an uploaded audio sample.
+  source_operation: openapi/gradium-openapi-original.json#create_voice_voices__post
+- name: get_voice
+  description: Retrieve metadata for a Gradium voice by voice UID.
+  source_operation: openapi/gradium-openapi-original.json#get_voice_voices__voice_uid__get
+- name: update_voice
+  description: Update metadata for an existing custom Gradium voice.
+  source_operation: openapi/gradium-openapi-original.json#update_voice_voices__voice_uid__put
+- name: delete_voice
+  description: Delete a custom Gradium voice by voice UID.
+  source_operation: openapi/gradium-openapi-original.json#delete_voice_voices__voice_uid__delete
+- name: create_pronunciation_dictionary
+  description: Create a pronunciation dictionary with language-specific rewrite rules.
+  source_operation: openapi/gradium-openapi-original.json#create_pronunciation_dictionary_pronunciations__post
+- name: list_pronunciation_dictionaries
+  description: List pronunciation dictionaries for the authenticated organization.
+  source_operation: openapi/gradium-openapi-original.json#list_pronunciation_dictionaries_pronunciations__get
+- name: get_pronunciation_dictionary
+  description: Retrieve a pronunciation dictionary and its rewrite rules by UID.
+  source_operation: openapi/gradium-openapi-original.json#get_pronunciation_dictionary_pronunciations__uid__get
+- name: update_pronunciation_dictionary
+  description: Update a pronunciation dictionary and its rewrite rules.
+  source_operation: openapi/gradium-openapi-original.json#update_pronunciation_dictionary_pronunciations__uid__put
+- name: delete_pronunciation_dictionary
+  description: Delete a pronunciation dictionary by UID.
+  source_operation: openapi/gradium-openapi-original.json#delete_pronunciation_dictionary_pronunciations__uid__delete
+- name: get_credits
+  description: Get the current Gradium credit balance for the authenticated subscription.
+  source_operation: openapi/gradium-openapi-original.json#get_credits_usages_credits_get

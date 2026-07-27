@@ -1,22 +1,150 @@
 aid: gradium
 name: Gradium
-description: 'Gradium is a company surfaced as a portfolio company of amplify-partners and added to the
-  API Evangelist network as a stub for enrichment. Sector: ai-ml. This profile is a lead awaiting the
-  enrichment pipeline.'
+description: >-
+  Gradium is a voice AI lab (Paris and Silicon Valley) building audio language models
+  for real-time, low-latency Text-to-Speech, Speech-to-Text, and Speech-to-Speech
+  translation. Founded in 2025 by ex-DeepMind / Meta / Kyutai researchers (Neil
+  Zeghidour, Olivier Teboul, Laurent Mazaré, Alexandre Défossez), Gradium exposes a
+  developer API over REST and WebSocket featuring instant voice cloning from a
+  10-second sample, custom pronunciation dictionaries, sub-300ms time-to-first-token
+  streaming, and multilingual support (English, French, German, Spanish, Portuguese).
+  It ships first-party Python and Rust SDKs, a `gradium` CLI, and the open-source
+  gradbot voice-agent framework, and is available on AWS Marketplace / SageMaker.
+  Backed by a $70M seed round with participation from Amplify Partners, Eric Schmidt,
+  and Xavier Niel.
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://gradium.ai/assets/dots_1200.png
 url: https://raw.githubusercontent.com/api-evangelist/gradium/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
 x-backed-by:
 - amplify-partners
-x-tier: stub
+x-tier: enriched
 x-tier-reason: portfolio-lead
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-19'
 tags:
 - Company
 - Ai Ml
-apis: []
+- Voice AI
+- Text-to-Speech
+- Speech-to-Text
+- Speech-to-Speech
+- Voice Cloning
+- Audio
+- Real-Time Streaming
+- WebSocket
+- Developer API
+- Voice Agents
+apis:
+- aid: gradium:gradium-metering-api
+  name: Gradium metering API
+  description: The metering API from Gradium — 1 operation(s) for metering.
+  humanURL: https://docs.gradium.ai/api-reference/introduction
+  baseURL: https://api.gradium.ai/api
+  tags:
+  - metering
+  properties:
+  - type: OpenAPI
+    url: openapi/gradium-metering-api-openapi.yml
+  - type: Documentation
+    url: https://docs.gradium.ai/
+  - type: APIReference
+    url: https://docs.gradium.ai/api-reference/introduction
+  - type: Authentication
+    url: authentication/gradium-authentication.yml
+- aid: gradium:gradium-pronunciations-api
+  name: Gradium Pronunciations API
+  description: Manage pronunciation dictionaries for custom text rewriting
+  humanURL: https://docs.gradium.ai/api-reference/introduction
+  baseURL: https://api.gradium.ai/api
+  tags:
+  - Pronunciations
+  properties:
+  - type: OpenAPI
+    url: openapi/gradium-pronunciations-api-openapi.yml
+  - type: Documentation
+    url: https://docs.gradium.ai/
+  - type: APIReference
+    url: https://docs.gradium.ai/api-reference/introduction
+  - type: Authentication
+    url: authentication/gradium-authentication.yml
+- aid: gradium:gradium-s2s-api
+  name: Gradium S2S API
+  description: The S2S API from Gradium — 1 operation(s) for s2s.
+  humanURL: https://docs.gradium.ai/api-reference/introduction
+  baseURL: https://api.gradium.ai/api
+  tags:
+  - S2S
+  properties:
+  - type: OpenAPI
+    url: openapi/gradium-s2s-api-openapi.yml
+  - type: Documentation
+    url: https://docs.gradium.ai/
+  - type: APIReference
+    url: https://docs.gradium.ai/api-reference/introduction
+  - type: Authentication
+    url: authentication/gradium-authentication.yml
+- aid: gradium:gradium-stt-api
+  name: Gradium STT API
+  description: Speech-to-Text endpoints for converting audio to text
+  humanURL: https://docs.gradium.ai/api-reference/introduction
+  baseURL: https://api.gradium.ai/api
+  tags:
+  - STT
+  properties:
+  - type: OpenAPI
+    url: openapi/gradium-stt-api-openapi.yml
+  - type: Documentation
+    url: https://docs.gradium.ai/
+  - type: APIReference
+    url: https://docs.gradium.ai/api-reference/introduction
+  - type: Authentication
+    url: authentication/gradium-authentication.yml
+- aid: gradium:gradium-tts-api
+  name: Gradium TTS API
+  description: Text-to-Speech endpoints for converting text to audio
+  humanURL: https://docs.gradium.ai/api-reference/introduction
+  baseURL: https://api.gradium.ai/api
+  tags:
+  - TTS
+  properties:
+  - type: OpenAPI
+    url: openapi/gradium-tts-api-openapi.yml
+  - type: Documentation
+    url: https://docs.gradium.ai/
+  - type: APIReference
+    url: https://docs.gradium.ai/api-reference/introduction
+  - type: Authentication
+    url: authentication/gradium-authentication.yml
+- aid: gradium:gradium-voices-api
+  name: Gradium Voices API
+  description: Manage custom voice clones
+  humanURL: https://docs.gradium.ai/api-reference/introduction
+  baseURL: https://api.gradium.ai/api
+  tags:
+  - Voices
+  properties:
+  - type: OpenAPI
+    url: openapi/gradium-voices-api-openapi.yml
+  - type: Documentation
+    url: https://docs.gradium.ai/
+  - type: APIReference
+    url: https://docs.gradium.ai/api-reference/introduction
+  - type: Authentication
+    url: authentication/gradium-authentication.yml
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
@@ -25,3 +153,78 @@ maintainers:
 common:
 - type: Website
   url: https://gradium.ai
+- type: DeveloperPortal
+  url: https://docs.gradium.ai/
+- type: Documentation
+  url: https://docs.gradium.ai/
+- type: APIReference
+  url: https://docs.gradium.ai/api-reference/introduction
+- type: GettingStarted
+  url: https://docs.gradium.ai/guides/installation
+- type: OpenAPI
+  url: openapi/gradium-openapi-original.json
+- type: LLMsTxt
+  url: llms/gradium-llms.txt
+- type: SDKs
+  url: packages/gradium-packages.yml
+- type: Packages
+  url: packages/gradium-packages.yml
+- type: CLI
+  url: cli/gradium-cli.yml
+- type: MCPServer
+  url: mcp/gradium-mcp.yml
+- type: Authentication
+  url: authentication/gradium-authentication.yml
+- type: Conventions
+  url: conventions/gradium-conventions.yml
+- type: ErrorCatalog
+  url: errors/gradium-error-codes.yml
+- type: Conformance
+  url: conformance/gradium-conformance.yml
+- type: DataModel
+  url: data-model/gradium-data-model.yml
+- type: Overlay
+  url: overlays/gradium-openapi-overlay.yaml
+- type: AsyncAPI
+  url: asyncapi/gradium-speech-asyncapi.yml
+- type: Lifecycle
+  url: lifecycle/gradium-lifecycle.yml
+- type: Deprecation
+  url: lifecycle/gradium-lifecycle.yml
+- type: ChangeLog
+  url: changelog/gradium-changelog.yml
+- type: DomainSecurity
+  url: security/gradium-domain-security.yml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: RateLimits
+  url: https://docs.gradium.ai/guides/limits
+- type: StatusPage
+  url: https://gradium.statuspage.io/
+- type: TrustCenter
+  url: https://trust.gradium.ai/
+- type: Sandbox
+  url: https://studio.gradium.ai/
+- type: Blog
+  url: https://gradium.ai/blog
+- type: GitHubOrganization
+  url: https://github.com/gradium-ai
+- type: Support
+  url: mailto:support@gradium.ai
+- type: Community
+  url: https://discord.com/invite/bcysuPRzXE
+- type: Pricing
+  url: https://gradium.ai/pricing
+- type: SignUp
+  url: https://studio.gradium.ai/platform/subscription
+- type: Login
+  url: https://accounts.gradium.ai/sign-in
+- type: TermsOfService
+  url: https://www.gradium.ai/terms-of-service
+- type: PrivacyPolicy
+  url: https://www.gradium.ai/privacy
+x-enrichment:
+  date: '2026-07-19'
+  status: backfilled
+  pass: local-v1
+  note: backfilled from .gitignore signal + verified work evidence

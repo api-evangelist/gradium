@@ -1,0 +1,25 @@
+generated: '2026-07-19'
+method: searched
+source: https://docs.gradium.ai/guides/release-notes, https://docs.gradium.ai/guides/limits, https://gradium.statuspage.io/
+versioning:
+  scheme: model-pinning
+  current_model: default (gradium TTS, upgraded 2026.06.10)
+  detail: >-
+    API surface is unversioned in the URL (https://api.gradium.ai/api). Model
+    behavior is versioned via the model_name request field; integrations pinned to
+    a specific model switch by changing the model identifier (e.g. gradium-tts-202602).
+  docs: https://docs.gradium.ai/guides/release-notes
+deprecation:
+  policy: >-
+    Superseded models are gradually phased out. The previous TTS generation
+    (model_name gradium-tts-202602) was announced for phase-out over the weeks
+    following the 2026.06.10 default-model upgrade. Default-model users are migrated
+    automatically with no code changes.
+  sunset_header: false
+  docs: https://docs.gradium.ai/guides/release-notes
+sla:
+  session_max_seconds: 300
+  concurrency: plan-dependent (contact support@gradium.ai)
+  docs: https://docs.gradium.ai/guides/limits
+status_page: https://gradium.statuspage.io/
+deprecated_operations: []

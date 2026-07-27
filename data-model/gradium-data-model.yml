@@ -1,0 +1,40 @@
+generated: '2026-07-19'
+method: derived
+source: openapi/gradium-openapi-original.json
+entities:
+- name: Voice
+  schema: VoiceResponse
+  id_field: uid
+  fields: [uid, name, description, language, start_s, stop_s, filename, org_uid, is_pending, has_audio, is_pro_clone]
+  operations: [create_voice_voices__post, get_voices_voices__get, get_voice_voices__voice_uid__get, update_voice_voices__voice_uid__put, delete_voice_voices__voice_uid__delete]
+- name: PronunciationDictionary
+  schema: PronunciationDictionaryResponse
+  id_field: uid
+  operations: [create_pronunciation_dictionary_pronunciations__post, list_pronunciation_dictionaries_pronunciations__get, get_pronunciation_dictionary_pronunciations__uid__get, update_pronunciation_dictionary_pronunciations__uid__put, delete_pronunciation_dictionary_pronunciations__uid__delete]
+- name: PronunciationRule
+  schema: PronunciationRuleResponse
+  note: Language-specific rewrite rules that belong to a PronunciationDictionary.
+- name: CreditsSummary
+  schema: CreditsSummary
+  operations: [get_credits_usages_credits_get]
+  note: Credit balance for the authenticated subscription/organization.
+- name: Organization
+  id_field: org_uid
+  note: Owning tenant; referenced by Voice.org_uid. Not directly CRUD-exposed in the public API.
+relationships:
+- from: Voice
+  to: Organization
+  type: belongs_to
+  via: org_uid
+- from: PronunciationDictionary
+  to: PronunciationRule
+  type: has_many
+  via: rules
+- from: PronunciationRule
+  to: PronunciationDictionary
+  type: belongs_to
+  via: dictionary uid
+- from: CreditsSummary
+  to: Organization
+  type: belongs_to
+  via: authenticated subscription

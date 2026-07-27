@@ -1,0 +1,26 @@
+generated: '2026-07-19'
+method: searched
+source: https://github.com/gradium-ai/gradium-py (gradium/cli.py), https://pypi.org/project/gradium/
+name: gradium
+description: First-party command-line interface shipped with the Gradium Python SDK (entry point `gradium = gradium.cli:main`).
+binary: gradium
+install:
+- pip install gradium
+global_flags:
+- flag: --gradium-base-url
+  description: Override the Gradium API base URL.
+- flag: --api-key
+  description: Gradium API key (falls back to the GRADIUM_API_KEY environment variable).
+commands:
+- name: tts
+  description: Convert text to speech audio.
+  flags:
+  - --voice-id
+  - --gradium-base-url
+  - --api-key
+- name: stt
+  description: Transcribe an audio file to text.
+  flags:
+  - --json
+  - --gradium-base-url
+  - --api-key

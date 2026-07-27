@@ -1,0 +1,24 @@
+generated: '2026-07-19'
+method: searched
+source: https://docs.gradium.ai/guides/release-notes
+scheme: date-based
+current: '2026.06.10'
+docs: https://docs.gradium.ai/guides/release-notes
+entries:
+- version: '2026.06.10'
+  date: '2026-06-10'
+  breaking: false
+  highlights:
+  - Upgraded default TTS model with more expressive speech and more reliable pronunciation for production voice agents.
+  - Improved natural prosody, phrasing, intonation, and pacing (notably in conversational turns and longer passages).
+  - Better spelling-out of email addresses, reference numbers, confirmation codes, and acronyms (API, SQL, URL).
+  - Default-model integrations migrate automatically; pinned integrations can set model_name to gradium-tts-202602 to stay on the previous model temporarily (phased out over following weeks).
+- version: '2026.02'
+  date: '2026-02-01'
+  breaking: false
+  highlights:
+  - New advanced TTS and STT models with improved audio quality, accuracy, and natural-sounding generation (now default).
+  - Custom pronunciation dictionaries for brand names, technical terms, and acronyms.
+  - WebSocket multiplexing — multiple TTS/STT requests over a single connection.
+  - Gradium referral program (earn up to 9M API credits).
+  - AWS Marketplace availability and SageMaker AI deployment with bidirectional streaming.
