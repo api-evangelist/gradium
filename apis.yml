@@ -162,7 +162,7 @@ common:
 - type: GettingStarted
   url: https://docs.gradium.ai/guides/installation
 - type: OpenAPI
-  url: openapi/gradium-openapi-original.json
+  url: openapi/_original/gradium-openapi-original.json
 - type: LLMsTxt
   url: llms/gradium-llms.txt
 - type: SDKs
