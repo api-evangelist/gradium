@@ -1,0 +1,119 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Gradium metering Voices API",
+    "version": "0.1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Voices",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Voices",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.gradium.ai/api/voices/",
+            "params": [
+              {
+                "name": "skip",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "include_catalog",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List voices for the authenticated organization."
+        },
+        {
+          "info": {
+            "name": "Create Voice",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.gradium.ai/api/voices/",
+            "body": {
+              "type": "multipart-form",
+              "data": []
+            }
+          },
+          "docs": "Create a new voice for an organization with audio file upload."
+        },
+        {
+          "info": {
+            "name": "Get Voice",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.gradium.ai/api/voices/:voice_uid",
+            "params": [
+              {
+                "name": "voice_uid",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a voice by its UID. Optional org_uid and key_uid for access control."
+        },
+        {
+          "info": {
+            "name": "Update Voice",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.gradium.ai/api/voices/:voice_uid",
+            "params": [
+              {
+                "name": "voice_uid",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a voice by its UID."
+        },
+        {
+          "info": {
+            "name": "Delete Voice",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.gradium.ai/api/voices/:voice_uid",
+            "params": [
+              {
+                "name": "voice_uid",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a voice by its UID."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

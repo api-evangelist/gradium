@@ -1,0 +1,104 @@
+{
+  "item": [
+    {
+      "id": "f77a1352-a4b0-4af2-a344-17743ef84163",
+      "name": "metering",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "413ddaca-9004-48b9-ae9b-fa29801da563",
+          "name": "Get Credits",
+          "request": {
+            "name": "Get Credits",
+            "description": {
+              "content": "Get current credit balance for the authenticated user's subscription.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "usages",
+                "credits"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "db4500f0-6e4e-411a-bb06-fb56f1b1c9a7",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "usages",
+                    "credits"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"remaining_credits\": 4307,\n  \"allocated_credits\": 7363,\n  \"billing_period\": \"string\",\n  \"next_rollover_date\": \"1989-03-04\",\n  \"plan_name\": \"\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.gradium.ai/api",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "77c4dfee-c28b-4098-a719-d7a7d73fc621",
+    "name": "Gradium metering API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "This documentation covers the Gradium API.\n\nThis API exposes our Text-To-Speech and Speech-To-Text models, which offers low-latency, high-quality & natural sounding output and best in class accuracy.  \n\nFor issues, questions, or feature requests, please contact us at support@gradium.ai",
+      "type": "text/plain"
+    }
+  }
+}

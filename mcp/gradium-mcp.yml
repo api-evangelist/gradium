@@ -2,11 +2,10 @@ generated: '2026-07-19'
 method: derived
 status: candidate
 source: openapi/gradium-openapi-original.json
-note: >-
-  No official hosted/remote Gradium MCP server was found (checked docs, GitHub org
-  gradium-ai, and MCP registries as of 2026-07-19). The tool list below is a
-  candidate derived one-to-one from the REST OpenAPI operations. Streaming
-  TTS/STT/S2S (WebSocket) endpoints are excluded as they are not request/response tools.
+note: No official hosted/remote Gradium MCP server was found (checked docs, GitHub org gradium-ai, and
+  MCP registries as of 2026-07-19). The tool list below is a candidate derived one-to-one from the REST
+  OpenAPI operations. Streaming TTS/STT/S2S (WebSocket) endpoints are excluded as they are not request/response
+  tools.
 server:
   name: gradium
   transport: http
@@ -44,3 +43,9 @@ tools:
 - name: get_credits
   description: Get the current Gradium credit balance for the authenticated subscription.
   source_operation: openapi/gradium-openapi-original.json#get_credits_usages_credits_get
+deployment:
+  mode: none
+  verified: derived
+  tools: 11
+  checked: '2026-08-12'
+  source: catalog MCP census

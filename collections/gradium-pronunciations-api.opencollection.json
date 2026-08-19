@@ -1,0 +1,119 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Gradium metering Pronunciations API",
+    "version": "0.1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Pronunciations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Pronunciation Dictionaries",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.gradium.ai/api/pronunciations/",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "language",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List pronunciation dictionaries for the authenticated organization."
+        },
+        {
+          "info": {
+            "name": "Create Pronunciation Dictionary",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.gradium.ai/api/pronunciations/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a pronunciation dictionary for the authenticated organization."
+        },
+        {
+          "info": {
+            "name": "Get Pronunciation Dictionary",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.gradium.ai/api/pronunciations/:uid",
+            "params": [
+              {
+                "name": "uid",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a pronunciation dictionary by its UID."
+        },
+        {
+          "info": {
+            "name": "Update Pronunciation Dictionary",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.gradium.ai/api/pronunciations/:uid",
+            "params": [
+              {
+                "name": "uid",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a pronunciation dictionary by its UID."
+        },
+        {
+          "info": {
+            "name": "Delete Pronunciation Dictionary",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.gradium.ai/api/pronunciations/:uid",
+            "params": [
+              {
+                "name": "uid",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a pronunciation dictionary by its UID."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,56 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Gradium metering TTS API",
+    "version": "0.1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "TTS",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "TTS WebSocket Stream",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.gradium.ai/api/speech/tts",
+            "headers": [
+              {
+                "name": "x-api-key",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Connect to this endpoint via WebSocket for real-time text-to-speech conversion with low latency audio streaming.\n\n**Connection URL:**\n\n```\nwss://api.gradium.ai/api/speech/tts\n```\n\n**Authentication:**\nInclude your API key in the WebSocket connection header:\n- Header: `x-api-key: your_api_key`\n\n---\n\n## Quick Reference\n\n| Direction | Message Type | Example |\n|-----------|-------------|---------|\n| 🔵⬆️ Client→Server | Setup (first) | `{\"type\": \"setup\", \"voice_id\": \"YTpq7expH9539ERJ\", \"model_name\": "
+        },
+        {
+          "info": {
+            "name": "TTS POST Endpoint",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.gradium.ai/api/post/speech/tts",
+            "headers": [
+              {
+                "name": "x-api-key",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Use this HTTP POST endpoint for simple, text-to-speech conversion. The audio\ndata is sent back in a streaming way.\n\n**Endpoint URL:**\n\n```\nhttps://api.gradium.ai/api/post/speech/tts\n```\n\n**Authentication:**\nInclude your API key in the request header:\n- Header: `x-api-key: your_api_key`\n\n---\n\n## Quick Example\n\n```bash\ncurl -L -X POST https://api.gradium.ai/api/post/speech/tts \\\n  -H \"x-api-key: your_api_key\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\"text\": \"Hello, this is a test of the te"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

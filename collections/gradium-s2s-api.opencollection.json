@@ -1,0 +1,35 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Gradium metering S2S API",
+    "version": "0.1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "S2S",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "S2S WebSocket Stream",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.gradium.ai/api/speech/s2s",
+            "headers": [
+              {
+                "name": "x-api-key",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Connect to this endpoint via WebSocket for real-time speech-to-speech: incoming audio is transcribed, optionally translated, and re-synthesized into speech.\n\n**Connection URL:**\n\n```\nwss://api.gradium.ai/api/speech/s2s\n```\n\n**Authentication:**\nInclude your API key in the WebSocket connection header:\n- Header: `x-api-key: your_api_key`\n\n---\n\n## Quick Reference\n\n| Direction | Message Type | Example |\n|-----------|-------------|---------|\n| 🔵⬆️ Client→Server | Setup (first) | `{\"type\": \"setup\", \"m"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

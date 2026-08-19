@@ -1,0 +1,76 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Gradium metering STT API",
+    "version": "0.1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "STT",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "STT WebSocket Stream",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.gradium.ai/api/speech/asr",
+            "headers": [
+              {
+                "name": "x-api-key",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Connect to this endpoint via WebSocket for real-time speech-to-text conversion with streaming audio input.\n\n**Connection URL:**\n\n```\nwss://api.gradium.ai/api/speech/asr\n```\n\n**Authentication:**\nInclude your API key in the WebSocket connection header:\n- Header: `x-api-key: your_api_key`\n\n---\n\n## Quick Reference\n\n| Direction | Message Type | Example |\n|-----------|-------------|---------|\n| 🔵⬆️ Client→Server | Setup (first) | `{\"type\": \"setup\", \"model_name\": \"default\", \"input_format\": \"pcm\", \"jso"
+        },
+        {
+          "info": {
+            "name": "STT POST Endpoint",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.gradium.ai/api/post/speech/asr",
+            "headers": [
+              {
+                "name": "x-api-key",
+                "value": ""
+              },
+              {
+                "name": "Content-Type",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "model",
+                "value": "",
+                "type": "query",
+                "description": "Speech-to-Text model name."
+              },
+              {
+                "name": "input_format",
+                "value": "",
+                "type": "query",
+                "description": "Overrides the audio format detected from Content-Type."
+              },
+              {
+                "name": "json_config",
+                "value": "",
+                "type": "query",
+                "description": "JSON-encoded model configuration. Example: {\"language\": \"en\"}"
+              }
+            ]
+          },
+          "docs": "Use this HTTP POST endpoint for simple, one-shot speech-to-text\ntranscription. Send the entire audio payload in the request body and receive\na stream of newline-delimited JSON (NDJSON) messages with the transcription\nresults.\n\n**Endpoint URL:**\n\n```\nhttps://api.gradium.ai/api/post/speech/asr\n```\n\n**Authentication:**\nInclude your API key in the request header:\n- Header: `x-api-key: your_api_key`\n\n---\n\n## Quick Example\n\n```bash\ncurl -L -X POST https://api.gradium.ai/api/post/speech/asr \\\n  -H \"x-a"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
