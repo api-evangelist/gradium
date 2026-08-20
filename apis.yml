@@ -41,6 +41,19 @@ tags:
 - Voice AI
 - Text-to-Speech
 - Speech-to-Text
+- Speech to Speech
+- Voice Cloning
+- Audio
+- Real-Time Streaming
+- WebSocket
+- Developer API
+- Voice Agents
+tags_raw:
+- Company
+- Ai Ml
+- Voice AI
+- Text-to-Speech
+- Speech-to-Text
 - Speech-to-Speech
 - Voice Cloning
 - Audio
@@ -55,6 +68,8 @@ apis:
   humanURL: https://docs.gradium.ai/api-reference/introduction
   baseURL: https://api.gradium.ai/api
   tags:
+  - Metering
+  tags_raw:
   - metering
   properties:
   - type: OpenAPI
