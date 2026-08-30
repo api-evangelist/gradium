@@ -53,7 +53,7 @@ tags:
 - Voice AI
 - Text-to-Speech
 - Speech-to-Text
-- Speech to Speech
+- Speech-to-Speech
 - Voice Cloning
 - Audio
 - Real-Time Streaming
@@ -80,7 +80,7 @@ apis:
   humanURL: https://docs.gradium.ai/api-reference/introduction
   baseURL: https://api.gradium.ai/api
   tags:
-  - Metering
+  - metering
   tags_raw:
   - metering
   properties:
