@@ -163,6 +163,8 @@ apis:
   humanURL: https://docs.gradium.ai/api-reference/introduction
   baseURL: https://api.gradium.ai/api
   tags:
+  - Voice
+  tags_raw:
   - Voices
   properties:
   - type: OpenAPI
