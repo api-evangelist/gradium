@@ -1,18 +1,24 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Gradium metering API
-  description: "This documentation covers the Gradium API.\n\nThis API exposes our Text-To-Speech and Speech-To-Text models, which offers low-latency, high-quality & natural sounding output and best in class accuracy.  \n\nFor issues, questions, or feature requests, please contact us at support@gradium.ai"
+  title: Gradium Metering API
+  description: 'This documentation covers the Gradium API.
+
+
+    This API exposes our Text-To-Speech and Speech-To-Text models, which offers low-latency, high-quality & natural sounding output and best in class accuracy.
+
+
+    For issues, questions, or feature requests, please contact us at support@gradium.ai'
   version: 0.1.0
 servers:
 - url: https://api.gradium.ai/api
   description: Gradium API
 tags:
-- name: metering
+- name: Metering
 paths:
   /usages/credits:
     get:
       tags:
-      - metering
+      - Metering
       summary: Get Credits
       description: Get current credit balance for the authenticated user's subscription.
       operationId: get_credits_usages_credits_get

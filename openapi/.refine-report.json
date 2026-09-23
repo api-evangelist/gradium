@@ -1,24 +1,32 @@
 {
   "provider": "gradium",
   "sources": [
-    "gradium-metering-api-openapi.yml",
-    "gradium-pronunciations-api-openapi.yml",
-    "gradium-s2s-api-openapi.yml",
-    "gradium-stt-api-openapi.yml",
-    "gradium-tts-api-openapi.yml",
-    "gradium-voices-api-openapi.yml"
+    "_original/gradium-openapi-original.json"
   ],
   "outputs": [
-    "gradium-metering-api-openapi.yml",
     "gradium-pronunciations-api-openapi.yml",
     "gradium-s2s-api-openapi.yml",
     "gradium-stt-api-openapi.yml",
     "gradium-tts-api-openapi.yml",
-    "gradium-voices-api-openapi.yml"
+    "gradium-voices-api-openapi.yml",
+    "gradium-metering-api-openapi.yml"
   ],
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "gradium-openapi-original.json: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "gradium-openapi-original.json: declared missing tag: S2S",
+    "gradium-openapi-original.json: declared missing tag: metering",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "gradium-metering-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "gradium-pronunciations-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "gradium-s2s-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "gradium-stt-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "gradium-tts-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "gradium-voices-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

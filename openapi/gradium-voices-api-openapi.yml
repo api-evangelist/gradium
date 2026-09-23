@@ -1,7 +1,13 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Gradium metering Voices API
-  description: "This documentation covers the Gradium API.\n\nThis API exposes our Text-To-Speech and Speech-To-Text models, which offers low-latency, high-quality & natural sounding output and best in class accuracy.  \n\nFor issues, questions, or feature requests, please contact us at support@gradium.ai"
+  title: Gradium Voices API
+  description: 'This documentation covers the Gradium API.
+
+
+    This API exposes our Text-To-Speech and Speech-To-Text models, which offers low-latency, high-quality & natural sounding output and best in class accuracy.
+
+
+    For issues, questions, or feature requests, please contact us at support@gradium.ai'
   version: 0.1.0
 servers:
 - url: https://api.gradium.ai/api
@@ -165,48 +171,6 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
-    VoiceUpdate:
-      properties:
-        name:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Name
-        description:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Description
-        language:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Language
-        start_s:
-          anyOf:
-          - type: number
-          - type: 'null'
-          title: Start S
-        tags:
-          anyOf:
-          - items:
-              additionalProperties:
-                anyOf:
-                - type: string
-                - type: boolean
-                - type: 'null'
-              type: object
-            type: array
-          - type: 'null'
-          title: Tags
-        rank:
-          anyOf:
-          - type: number
-          - type: 'null'
-          title: Rank
-      type: object
-      title: VoiceUpdate
-      description: Schema for updating voice data.
     APIVoiceResponse:
       properties:
         uid:
@@ -255,45 +219,86 @@ components:
       - is_pro_clone
       title: APIVoiceResponse
       description: The response sent to the user in the API for external user.
-    ValidationError:
+    VoiceUpdate:
       properties:
-        loc:
-          items:
-            anyOf:
-            - type: string
-            - type: integer
-          type: array
-          title: Location
-        msg:
-          type: string
-          title: Message
-        type:
-          type: string
-          title: Error Type
-      type: object
-      required:
-      - loc
-      - msg
-      - type
-      title: ValidationError
-    ExportedTag:
-      properties:
-        category:
+        name:
           anyOf:
           - type: string
           - type: 'null'
-          title: Category
-        value:
+          title: Name
+        description:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Description
+        language:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Language
+        start_s:
+          anyOf:
+          - type: number
+          - type: 'null'
+          title: Start S
+        tags:
+          anyOf:
+          - items:
+              additionalProperties:
+                anyOf:
+                - type: string
+                - type: boolean
+                - type: 'null'
+              type: object
+            type: array
+          - type: 'null'
+          title: Tags
+        rank:
+          anyOf:
+          - type: number
+          - type: 'null'
+          title: Rank
+      type: object
+      title: VoiceUpdate
+      description: Schema for updating voice data.
+    Body_create_voice_voices__post:
+      properties:
+        audio_file:
           type: string
-          title: Value
+          format: binary
+          title: Audio File
+        name:
+          type: string
+          title: Name
+        input_format:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Input Format
+          description: Audio format. If omitted, inferred from the audio_file extension.
+        description:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Description
+        language:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Language
+        start_s:
+          type: number
+          title: Start S
+          default: 0
+        timeout_s:
+          type: number
+          title: Timeout S
+          default: 10
       type: object
       required:
-      - value
-      title: ExportedTag
-      description: 'Tag exported in the public API.
-
-
-        Hidden is used for filtering but not serialized.'
+      - audio_file
+      - name
+      title: Body_create_voice_voices__post
     VoiceResponse:
       properties:
         uid:
@@ -349,44 +354,45 @@ components:
       - filename
       title: VoiceResponse
       description: Schema for voice response data.
-    Body_create_voice_voices__post:
+    ValidationError:
       properties:
-        audio_file:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
           type: string
-          format: binary
-          title: Audio File
-        name:
+          title: Message
+        type:
           type: string
-          title: Name
-        input_format:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Input Format
-          description: Audio format. If omitted, inferred from the audio_file extension.
-        description:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Description
-        language:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Language
-        start_s:
-          type: number
-          title: Start S
-          default: 0
-        timeout_s:
-          type: number
-          title: Timeout S
-          default: 10
+          title: Error Type
       type: object
       required:
-      - audio_file
-      - name
-      title: Body_create_voice_voices__post
+      - loc
+      - msg
+      - type
+      title: ValidationError
+    ExportedTag:
+      properties:
+        category:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Category
+        value:
+          type: string
+          title: Value
+      type: object
+      required:
+      - value
+      title: ExportedTag
+      description: 'Tag exported in the public API.
+
+
+        Hidden is used for filtering but not serialized.'
     VoiceCreateResponse:
       properties:
         uid:
