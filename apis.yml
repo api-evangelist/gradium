@@ -61,6 +61,7 @@ tags:
 - WebSocket
 - Developer API
 - Voice Agents
+- Real-Time
 tags_raw:
 - Company
 - Ai Ml
@@ -74,9 +75,10 @@ tags_raw:
 - WebSocket
 - Developer API
 - Voice Agents
+- Real-Time
 apis:
 - aid: gradium:gradium-metering-api
-  name: Gradium metering API
+  name: Gradium Metering API
   description: The metering API from Gradium — 1 operation(s) for metering.
   humanURL: https://docs.gradium.ai/api-reference/introduction
   baseURL: https://api.gradium.ai/api

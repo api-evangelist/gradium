@@ -261,44 +261,54 @@ components:
       type: object
       title: VoiceUpdate
       description: Schema for updating voice data.
-    Body_create_voice_voices__post:
+    ValidationError:
       properties:
-        audio_file:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
           type: string
-          format: binary
-          title: Audio File
-        name:
+          title: Message
+        type:
           type: string
-          title: Name
-        input_format:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Input Format
-          description: Audio format. If omitted, inferred from the audio_file extension.
-        description:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Description
-        language:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Language
-        start_s:
-          type: number
-          title: Start S
-          default: 0
-        timeout_s:
-          type: number
-          title: Timeout S
-          default: 10
+          title: Error Type
       type: object
       required:
-      - audio_file
-      - name
-      title: Body_create_voice_voices__post
+      - loc
+      - msg
+      - type
+      title: ValidationError
+    ExportedTag:
+      properties:
+        category:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Category
+        value:
+          type: string
+          title: Value
+      type: object
+      required:
+      - value
+      title: ExportedTag
+      description: 'Tag exported in the public API.
+
+
+        Hidden is used for filtering but not serialized.'
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
     VoiceResponse:
       properties:
         uid:
@@ -354,45 +364,44 @@ components:
       - filename
       title: VoiceResponse
       description: Schema for voice response data.
-    ValidationError:
+    Body_create_voice_voices__post:
       properties:
-        loc:
-          items:
-            anyOf:
-            - type: string
-            - type: integer
-          type: array
-          title: Location
-        msg:
+        audio_file:
           type: string
-          title: Message
-        type:
+          format: binary
+          title: Audio File
+        name:
           type: string
-          title: Error Type
-      type: object
-      required:
-      - loc
-      - msg
-      - type
-      title: ValidationError
-    ExportedTag:
-      properties:
-        category:
+          title: Name
+        input_format:
           anyOf:
           - type: string
           - type: 'null'
-          title: Category
-        value:
-          type: string
-          title: Value
+          title: Input Format
+          description: Audio format. If omitted, inferred from the audio_file extension.
+        description:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Description
+        language:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Language
+        start_s:
+          type: number
+          title: Start S
+          default: 0
+        timeout_s:
+          type: number
+          title: Timeout S
+          default: 10
       type: object
       required:
-      - value
-      title: ExportedTag
-      description: 'Tag exported in the public API.
-
-
-        Hidden is used for filtering but not serialized.'
+      - audio_file
+      - name
+      title: Body_create_voice_voices__post
     VoiceCreateResponse:
       properties:
         uid:
@@ -411,15 +420,6 @@ components:
           default: false
       type: object
       title: VoiceCreateResponse
-    HTTPValidationError:
-      properties:
-        detail:
-          items:
-            $ref: '#/components/schemas/ValidationError'
-          type: array
-          title: Detail
-      type: object
-      title: HTTPValidationError
 x-tagGroups:
 - name: Documentation
   tags:

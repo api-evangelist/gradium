@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Gradium S2 S API
+  title: Gradium S2S API
   description: 'This documentation covers the Gradium API.
 
 
