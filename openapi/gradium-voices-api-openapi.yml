@@ -171,6 +171,89 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
+    VoiceCreateResponse:
+      properties:
+        uid:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Uid
+        error:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Error
+        was_updated:
+          type: boolean
+          title: Was Updated
+          default: false
+      type: object
+      title: VoiceCreateResponse
+    Body_create_voice_voices__post:
+      properties:
+        audio_file:
+          type: string
+          format: binary
+          title: Audio File
+        name:
+          type: string
+          title: Name
+        input_format:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Input Format
+          description: Audio format. If omitted, inferred from the audio_file extension.
+        description:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Description
+        language:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Language
+        start_s:
+          type: number
+          title: Start S
+          default: 0
+        timeout_s:
+          type: number
+          title: Timeout S
+          default: 10
+      type: object
+      required:
+      - audio_file
+      - name
+      title: Body_create_voice_voices__post
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    ExportedTag:
+      properties:
+        category:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Category
+        value:
+          type: string
+          title: Value
+      type: object
+      required:
+      - value
+      title: ExportedTag
+      description: 'Tag exported in the public API.
+
+
+        Hidden is used for filtering but not serialized.'
     APIVoiceResponse:
       properties:
         uid:
@@ -282,33 +365,6 @@ components:
       - msg
       - type
       title: ValidationError
-    ExportedTag:
-      properties:
-        category:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Category
-        value:
-          type: string
-          title: Value
-      type: object
-      required:
-      - value
-      title: ExportedTag
-      description: 'Tag exported in the public API.
-
-
-        Hidden is used for filtering but not serialized.'
-    HTTPValidationError:
-      properties:
-        detail:
-          items:
-            $ref: '#/components/schemas/ValidationError'
-          type: array
-          title: Detail
-      type: object
-      title: HTTPValidationError
     VoiceResponse:
       properties:
         uid:
@@ -364,62 +420,6 @@ components:
       - filename
       title: VoiceResponse
       description: Schema for voice response data.
-    Body_create_voice_voices__post:
-      properties:
-        audio_file:
-          type: string
-          format: binary
-          title: Audio File
-        name:
-          type: string
-          title: Name
-        input_format:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Input Format
-          description: Audio format. If omitted, inferred from the audio_file extension.
-        description:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Description
-        language:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Language
-        start_s:
-          type: number
-          title: Start S
-          default: 0
-        timeout_s:
-          type: number
-          title: Timeout S
-          default: 10
-      type: object
-      required:
-      - audio_file
-      - name
-      title: Body_create_voice_voices__post
-    VoiceCreateResponse:
-      properties:
-        uid:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Uid
-        error:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Error
-        was_updated:
-          type: boolean
-          title: Was Updated
-          default: false
-      type: object
-      title: VoiceCreateResponse
 x-tagGroups:
 - name: Documentation
   tags:
