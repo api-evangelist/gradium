@@ -189,53 +189,6 @@ components:
           default: false
       type: object
       title: VoiceCreateResponse
-    Body_create_voice_voices__post:
-      properties:
-        audio_file:
-          type: string
-          format: binary
-          title: Audio File
-        name:
-          type: string
-          title: Name
-        input_format:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Input Format
-          description: Audio format. If omitted, inferred from the audio_file extension.
-        description:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Description
-        language:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Language
-        start_s:
-          type: number
-          title: Start S
-          default: 0
-        timeout_s:
-          type: number
-          title: Timeout S
-          default: 10
-      type: object
-      required:
-      - audio_file
-      - name
-      title: Body_create_voice_voices__post
-    HTTPValidationError:
-      properties:
-        detail:
-          items:
-            $ref: '#/components/schemas/ValidationError'
-          type: array
-          title: Detail
-      type: object
-      title: HTTPValidationError
     ExportedTag:
       properties:
         category:
@@ -254,54 +207,27 @@ components:
 
 
         Hidden is used for filtering but not serialized.'
-    APIVoiceResponse:
+    ValidationError:
       properties:
-        uid:
-          type: string
-          title: Uid
-        name:
-          type: string
-          title: Name
-        description:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Description
-        filename:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Filename
-        start_s:
-          anyOf:
-          - type: number
-          - type: 'null'
-          title: Start S
-        is_catalog:
-          type: boolean
-          title: Is Catalog
-        is_pro_clone:
-          type: boolean
-          title: Is Pro Clone
-        language:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Language
-        tags:
+        loc:
           items:
-            $ref: '#/components/schemas/ExportedTag'
+            anyOf:
+            - type: string
+            - type: integer
           type: array
-          title: Tags
-          default: []
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
       type: object
       required:
-      - uid
-      - name
-      - is_catalog
-      - is_pro_clone
-      title: APIVoiceResponse
-      description: The response sent to the user in the API for external user.
+      - loc
+      - msg
+      - type
+      title: ValidationError
     VoiceUpdate:
       properties:
         name:
@@ -344,27 +270,44 @@ components:
       type: object
       title: VoiceUpdate
       description: Schema for updating voice data.
-    ValidationError:
+    Body_create_voice_voices__post:
       properties:
-        loc:
-          items:
-            anyOf:
-            - type: string
-            - type: integer
-          type: array
-          title: Location
-        msg:
+        audio_file:
           type: string
-          title: Message
-        type:
+          format: binary
+          title: Audio File
+        name:
           type: string
-          title: Error Type
+          title: Name
+        input_format:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Input Format
+          description: Audio format. If omitted, inferred from the audio_file extension.
+        description:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Description
+        language:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Language
+        start_s:
+          type: number
+          title: Start S
+          default: 0
+        timeout_s:
+          type: number
+          title: Timeout S
+          default: 10
       type: object
       required:
-      - loc
-      - msg
-      - type
-      title: ValidationError
+      - audio_file
+      - name
+      title: Body_create_voice_voices__post
     VoiceResponse:
       properties:
         uid:
@@ -420,6 +363,63 @@ components:
       - filename
       title: VoiceResponse
       description: Schema for voice response data.
+    APIVoiceResponse:
+      properties:
+        uid:
+          type: string
+          title: Uid
+        name:
+          type: string
+          title: Name
+        description:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Description
+        filename:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Filename
+        start_s:
+          anyOf:
+          - type: number
+          - type: 'null'
+          title: Start S
+        is_catalog:
+          type: boolean
+          title: Is Catalog
+        is_pro_clone:
+          type: boolean
+          title: Is Pro Clone
+        language:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Language
+        tags:
+          items:
+            $ref: '#/components/schemas/ExportedTag'
+          type: array
+          title: Tags
+          default: []
+      type: object
+      required:
+      - uid
+      - name
+      - is_catalog
+      - is_pro_clone
+      title: APIVoiceResponse
+      description: The response sent to the user in the API for external user.
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
 x-tagGroups:
 - name: Documentation
   tags:

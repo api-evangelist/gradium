@@ -187,40 +187,6 @@ components:
       - original
       - rewrite
       title: PronunciationRuleCreate
-    HTTPValidationError:
-      properties:
-        detail:
-          items:
-            $ref: '#/components/schemas/ValidationError'
-          type: array
-          title: Detail
-      type: object
-      title: HTTPValidationError
-    PronunciationDictionaryCreate:
-      properties:
-        name:
-          type: string
-          title: Name
-        description:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Description
-        language:
-          type: string
-          title: Language
-        rules:
-          items:
-            $ref: '#/components/schemas/PronunciationRuleCreate'
-          type: array
-          title: Rules
-          default: []
-      type: object
-      required:
-      - name
-      - language
-      title: PronunciationDictionaryCreate
-      description: Pronunciation dictionary create schema.
     PronunciationDictionaryListResponse:
       properties:
         dictionaries:
@@ -237,33 +203,49 @@ components:
       - total
       title: PronunciationDictionaryListResponse
       description: Pronunciation dictionary list response schema.
-    PronunciationDictionaryUpdate:
+    PronunciationRuleResponse:
       properties:
-        name:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Name
-        description:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Description
-        language:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Language
-        rules:
-          anyOf:
-          - items:
-              $ref: '#/components/schemas/PronunciationRuleCreate'
-            type: array
-          - type: 'null'
-          title: Rules
+        original:
+          type: string
+          title: Original
+        rewrite:
+          type: string
+          title: Rewrite
+        case_sensitive:
+          type: boolean
+          title: Case Sensitive
+          default: false
+        id:
+          type: integer
+          title: Id
       type: object
-      title: PronunciationDictionaryUpdate
-      description: Pronunciation dictionary update schema.
+      required:
+      - original
+      - rewrite
+      - id
+      title: PronunciationRuleResponse
+      description: Pronunciation rule response schema.
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
     PronunciationDictionaryResponse:
       properties:
         name:
@@ -303,49 +285,67 @@ components:
       - created_at
       title: PronunciationDictionaryResponse
       description: Pronunciation dictionary response schema.
-    ValidationError:
+    PronunciationDictionaryUpdate:
       properties:
-        loc:
+        name:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Name
+        description:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Description
+        language:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Language
+        rules:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/PronunciationRuleCreate'
+            type: array
+          - type: 'null'
+          title: Rules
+      type: object
+      title: PronunciationDictionaryUpdate
+      description: Pronunciation dictionary update schema.
+    PronunciationDictionaryCreate:
+      properties:
+        name:
+          type: string
+          title: Name
+        description:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Description
+        language:
+          type: string
+          title: Language
+        rules:
           items:
-            anyOf:
-            - type: string
-            - type: integer
+            $ref: '#/components/schemas/PronunciationRuleCreate'
           type: array
-          title: Location
-        msg:
-          type: string
-          title: Message
-        type:
-          type: string
-          title: Error Type
+          title: Rules
+          default: []
       type: object
       required:
-      - loc
-      - msg
-      - type
-      title: ValidationError
-    PronunciationRuleResponse:
+      - name
+      - language
+      title: PronunciationDictionaryCreate
+      description: Pronunciation dictionary create schema.
+    HTTPValidationError:
       properties:
-        original:
-          type: string
-          title: Original
-        rewrite:
-          type: string
-          title: Rewrite
-        case_sensitive:
-          type: boolean
-          title: Case Sensitive
-          default: false
-        id:
-          type: integer
-          title: Id
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
       type: object
-      required:
-      - original
-      - rewrite
-      - id
-      title: PronunciationRuleResponse
-      description: Pronunciation rule response schema.
+      title: HTTPValidationError
 x-tagGroups:
 - name: Documentation
   tags:
