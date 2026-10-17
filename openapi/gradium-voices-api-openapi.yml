@@ -171,105 +171,15 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
-    VoiceCreateResponse:
+    HTTPValidationError:
       properties:
-        uid:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Uid
-        error:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Error
-        was_updated:
-          type: boolean
-          title: Was Updated
-          default: false
-      type: object
-      title: VoiceCreateResponse
-    ExportedTag:
-      properties:
-        category:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Category
-        value:
-          type: string
-          title: Value
-      type: object
-      required:
-      - value
-      title: ExportedTag
-      description: 'Tag exported in the public API.
-
-
-        Hidden is used for filtering but not serialized.'
-    ValidationError:
-      properties:
-        loc:
+        detail:
           items:
-            anyOf:
-            - type: string
-            - type: integer
+            $ref: '#/components/schemas/ValidationError'
           type: array
-          title: Location
-        msg:
-          type: string
-          title: Message
-        type:
-          type: string
-          title: Error Type
+          title: Detail
       type: object
-      required:
-      - loc
-      - msg
-      - type
-      title: ValidationError
-    VoiceUpdate:
-      properties:
-        name:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Name
-        description:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Description
-        language:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Language
-        start_s:
-          anyOf:
-          - type: number
-          - type: 'null'
-          title: Start S
-        tags:
-          anyOf:
-          - items:
-              additionalProperties:
-                anyOf:
-                - type: string
-                - type: boolean
-                - type: 'null'
-              type: object
-            type: array
-          - type: 'null'
-          title: Tags
-        rank:
-          anyOf:
-          - type: number
-          - type: 'null'
-          title: Rank
-      type: object
-      title: VoiceUpdate
-      description: Schema for updating voice data.
+      title: HTTPValidationError
     Body_create_voice_voices__post:
       properties:
         audio_file:
@@ -308,6 +218,24 @@ components:
       - audio_file
       - name
       title: Body_create_voice_voices__post
+    ExportedTag:
+      properties:
+        category:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Category
+        value:
+          type: string
+          title: Value
+      type: object
+      required:
+      - value
+      title: ExportedTag
+      description: 'Tag exported in the public API.
+
+
+        Hidden is used for filtering but not serialized.'
     VoiceResponse:
       properties:
         uid:
@@ -363,6 +291,45 @@ components:
       - filename
       title: VoiceResponse
       description: Schema for voice response data.
+    VoiceCreateResponse:
+      properties:
+        uid:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Uid
+        error:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Error
+        was_updated:
+          type: boolean
+          title: Was Updated
+          default: false
+      type: object
+      title: VoiceCreateResponse
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
     APIVoiceResponse:
       properties:
         uid:
@@ -411,15 +378,48 @@ components:
       - is_pro_clone
       title: APIVoiceResponse
       description: The response sent to the user in the API for external user.
-    HTTPValidationError:
+    VoiceUpdate:
       properties:
-        detail:
-          items:
-            $ref: '#/components/schemas/ValidationError'
-          type: array
-          title: Detail
+        name:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Name
+        description:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Description
+        language:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Language
+        start_s:
+          anyOf:
+          - type: number
+          - type: 'null'
+          title: Start S
+        tags:
+          anyOf:
+          - items:
+              additionalProperties:
+                anyOf:
+                - type: string
+                - type: boolean
+                - type: 'null'
+              type: object
+            type: array
+          - type: 'null'
+          title: Tags
+        rank:
+          anyOf:
+          - type: number
+          - type: 'null'
+          title: Rank
       type: object
-      title: HTTPValidationError
+      title: VoiceUpdate
+      description: Schema for updating voice data.
 x-tagGroups:
 - name: Documentation
   tags:
