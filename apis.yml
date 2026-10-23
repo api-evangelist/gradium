@@ -187,6 +187,8 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: PostmanWorkspace
+  url: https://www.postman.com/kinlaneapi/gradium/overview
 - url: https://gradium.ai/blog/feed.xml
   type: BlogRSS
 - type: Website
