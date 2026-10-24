@@ -1,33 +1,445 @@
 {
+  "info": {
+    "_postman_id": "f111f3d3-4a63-45c4-b322-5dbb300a7bac",
+    "name": "Gradium Voices API",
+    "description": "This documentation covers the Gradium API.\n\nThis API exposes our Text-To-Speech and Speech-To-Text models, which offers low-latency, high-quality & natural sounding output and best in class accuracy.\n\nFor issues, questions, or feature requests, please contact us at support@gradium.ai",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-22T02:21:01.000Z",
+    "updatedAt": "2026-10-22T02:21:02.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-f111f3d3-4a63-45c4-b322-5dbb300a7bac"
+  },
   "item": [
     {
-      "id": "9eb6c986-1628-4102-9259-e2fb2be4d2d4",
-      "name": "Voices",
-      "description": {
-        "content": "Manage custom voice clones",
-        "type": "text/plain"
-      },
+      "name": "voices",
       "item": [
         {
-          "id": "fb5aaf14-2adf-4fa8-ab1b-b240be735d06",
+          "name": "{voice_uid}",
+          "item": [
+            {
+              "name": "Get Voice",
+              "id": "520530b7-161f-43a7-832e-2fc59a706ef6",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/voices/:voice_uid",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "voices",
+                    ":voice_uid"
+                  ],
+                  "variable": [
+                    {
+                      "id": "63628f93-98a3-4c95-af4e-3d765dbc1983",
+                      "key": "voice_uid",
+                      "value": "<string>",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "description": "Get a voice by its UID. Optional org_uid and key_uid for access control."
+              },
+              "response": [
+                {
+                  "id": "a3685faa-a83d-4bc6-9ed4-02d448a8354f",
+                  "name": "Successful Response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/voices/:voice_uid",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "voices",
+                        ":voice_uid"
+                      ],
+                      "variable": [
+                        {
+                          "key": "voice_uid"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"uid\": \"<string>\",\n  \"name\": \"<string>\",\n  \"is_catalog\": \"<boolean>\",\n  \"is_pro_clone\": \"<boolean>\",\n  \"description\": \"<string>\",\n  \"filename\": \"<string>\",\n  \"start_s\": \"<number>\",\n  \"language\": \"<string>\"\n}",
+                  "createdAt": "2026-10-22T02:21:02.000Z",
+                  "updatedAt": "2026-10-22T02:21:02.000Z",
+                  "uid": "35240-a3685faa-a83d-4bc6-9ed4-02d448a8354f"
+                },
+                {
+                  "id": "3ddfc99a-e6fa-42cc-b60f-7e212c222da6",
+                  "name": "Validation Error",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/voices/:voice_uid",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "voices",
+                        ":voice_uid"
+                      ],
+                      "variable": [
+                        {
+                          "key": "voice_uid"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                  "code": 422,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"msg\": \"<string>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"loc\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"msg\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-10-22T02:21:02.000Z",
+                  "updatedAt": "2026-10-22T02:21:02.000Z",
+                  "uid": "35240-3ddfc99a-e6fa-42cc-b60f-7e212c222da6"
+                }
+              ],
+              "createdAt": "2026-10-22T02:21:02.000Z",
+              "updatedAt": "2026-10-22T02:21:02.000Z",
+              "uid": "35240-520530b7-161f-43a7-832e-2fc59a706ef6"
+            },
+            {
+              "name": "Update Voice",
+              "id": "de70e930-891a-47b5-afc0-be102cf051e4",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"language\": \"<string>\",\n  \"start_s\": \"<number>\",\n  \"tags\": [\n    {\n      \"minim_96e\": \"<string>\"\n    },\n    {\n      \"dolor3c\": \"<string>\"\n    }\n  ],\n  \"rank\": \"<number>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/voices/:voice_uid",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "voices",
+                    ":voice_uid"
+                  ],
+                  "variable": [
+                    {
+                      "id": "871e2669-2af9-48b2-891c-cbd6b277b00d",
+                      "key": "voice_uid",
+                      "value": "<string>",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "description": "Update a voice by its UID."
+              },
+              "response": [
+                {
+                  "id": "f8784596-5afa-4dd7-a9b4-1638c1655095",
+                  "name": "Successful Response",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"language\": \"<string>\",\n  \"start_s\": \"<number>\",\n  \"tags\": [\n    {\n      \"minim_96e\": \"<string>\"\n    },\n    {\n      \"dolor3c\": \"<string>\"\n    }\n  ],\n  \"rank\": \"<number>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/voices/:voice_uid",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "voices",
+                        ":voice_uid"
+                      ],
+                      "variable": [
+                        {
+                          "key": "voice_uid"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"uid\": \"<string>\",\n  \"name\": \"<string>\",\n  \"start_s\": \"<number>\",\n  \"filename\": \"<string>\",\n  \"description\": \"<string>\",\n  \"language\": \"<string>\",\n  \"stop_s\": \"<number>\",\n  \"org_uid\": \"<uuid>\",\n  \"is_pending\": false,\n  \"has_audio\": true,\n  \"is_pro_clone\": false\n}",
+                  "createdAt": "2026-10-22T02:21:02.000Z",
+                  "updatedAt": "2026-10-22T02:21:02.000Z",
+                  "uid": "35240-f8784596-5afa-4dd7-a9b4-1638c1655095"
+                },
+                {
+                  "id": "678ddc27-2502-4ec6-8063-fc712cdebae9",
+                  "name": "Validation Error",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"language\": \"<string>\",\n  \"start_s\": \"<number>\",\n  \"tags\": [\n    {\n      \"minim_96e\": \"<string>\"\n    },\n    {\n      \"dolor3c\": \"<string>\"\n    }\n  ],\n  \"rank\": \"<number>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/voices/:voice_uid",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "voices",
+                        ":voice_uid"
+                      ],
+                      "variable": [
+                        {
+                          "key": "voice_uid"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                  "code": 422,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"msg\": \"<string>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"loc\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"msg\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-10-22T02:21:02.000Z",
+                  "updatedAt": "2026-10-22T02:21:02.000Z",
+                  "uid": "35240-678ddc27-2502-4ec6-8063-fc712cdebae9"
+                }
+              ],
+              "createdAt": "2026-10-22T02:21:02.000Z",
+              "updatedAt": "2026-10-22T02:21:02.000Z",
+              "uid": "35240-de70e930-891a-47b5-afc0-be102cf051e4"
+            },
+            {
+              "name": "Delete Voice",
+              "id": "8c12814c-d712-44d0-a711-da4d9ac64227",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/voices/:voice_uid",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "voices",
+                    ":voice_uid"
+                  ],
+                  "variable": [
+                    {
+                      "id": "2cf12f3a-913b-478b-aa94-b29aeaf873c6",
+                      "key": "voice_uid",
+                      "value": "<string>",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "description": "Delete a voice by its UID."
+              },
+              "response": [
+                {
+                  "id": "6ac8339d-0835-471b-9721-2cc61ee7504e",
+                  "name": "Successful Response",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/voices/:voice_uid",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "voices",
+                        ":voice_uid"
+                      ],
+                      "variable": [
+                        {
+                          "key": "voice_uid"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "No Content",
+                  "code": 204,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-22T02:21:02.000Z",
+                  "updatedAt": "2026-10-22T02:21:02.000Z",
+                  "uid": "35240-6ac8339d-0835-471b-9721-2cc61ee7504e"
+                },
+                {
+                  "id": "0f2bafbf-a6ef-4db2-ac0a-4f8d78b1d240",
+                  "name": "Validation Error",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/voices/:voice_uid",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "voices",
+                        ":voice_uid"
+                      ],
+                      "variable": [
+                        {
+                          "key": "voice_uid"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                  "code": 422,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"msg\": \"<string>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"loc\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"msg\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-10-22T02:21:02.000Z",
+                  "updatedAt": "2026-10-22T02:21:02.000Z",
+                  "uid": "35240-0f2bafbf-a6ef-4db2-ac0a-4f8d78b1d240"
+                }
+              ],
+              "createdAt": "2026-10-22T02:21:02.000Z",
+              "updatedAt": "2026-10-22T02:21:02.000Z",
+              "uid": "35240-8c12814c-d712-44d0-a711-da4d9ac64227"
+            }
+          ],
+          "id": "7ba8adaa-cd0c-4dee-89ea-665883446a08",
+          "createdAt": "2026-10-22T02:21:02.000Z",
+          "updatedAt": "2026-10-22T02:21:02.000Z",
+          "uid": "35240-7ba8adaa-cd0c-4dee-89ea-665883446a08"
+        },
+        {
           "name": "Create Voice",
+          "id": "cf039807-7b4b-492c-9dc7-e32633f2ff73",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
-            "name": "Create Voice",
-            "description": {
-              "content": "Create a new voice for an organization with audio file upload.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "voices",
-                ""
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
+            "method": "POST",
             "header": [
               {
                 "key": "Content-Type",
@@ -38,325 +450,292 @@
                 "value": "application/json"
               }
             ],
-            "method": "POST",
-            "auth": null,
             "body": {
               "mode": "formdata",
               "formdata": [
                 {
+                  "description": "(Required) ",
                   "key": "audio_file",
                   "type": "file",
-                  "description": "(Required) "
+                  "value": null
                 },
                 {
+                  "description": "(Required) ",
                   "key": "name",
                   "value": "<string>",
-                  "type": "text",
-                  "description": "(Required) "
+                  "type": "text"
                 },
                 {
                   "key": "input_format",
                   "value": "<string>",
-                  "type": "text",
-                  "description": "Audio format. If omitted, inferred from the audio_file extension."
+                  "type": "text"
                 },
                 {
                   "key": "description",
                   "value": "<string>",
-                  "type": "text",
-                  "description": ""
+                  "type": "text"
                 },
                 {
                   "key": "language",
                   "value": "<string>",
-                  "type": "text",
-                  "description": ""
+                  "type": "text"
                 },
                 {
                   "key": "start_s",
                   "value": "0",
-                  "type": "text",
-                  "description": ""
+                  "type": "text"
                 },
                 {
                   "key": "timeout_s",
                   "value": "10",
-                  "type": "text",
-                  "description": ""
+                  "type": "text"
                 }
               ]
-            }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/voices/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "voices",
+                ""
+              ]
+            },
+            "description": "Create a new voice for an organization with audio file upload."
           },
           "response": [
             {
-              "id": "91b2e83f-b019-4106-8af4-163a69924957",
+              "id": "13c16c4d-abd3-4c6c-809f-01f846aa7624",
               "name": "Successful Response",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "voices",
-                    ""
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
+                "method": "POST",
                 "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "multipart/form-data"
+                  },
                   {
                     "key": "Accept",
                     "value": "application/json"
                   }
                 ],
-                "method": "POST",
                 "body": {
                   "mode": "formdata",
                   "formdata": [
                     {
-                      "description": {
-                        "content": "(Required) ",
-                        "type": "text/plain"
-                      },
+                      "description": "(Required) ",
                       "key": "audio_file",
-                      "value": "<binary>",
-                      "type": "text"
+                      "type": "file"
                     },
                     {
-                      "description": {
-                        "content": "(Required) ",
-                        "type": "text/plain"
-                      },
+                      "description": "(Required) ",
                       "key": "name",
                       "value": "<string>",
                       "type": "text"
                     },
                     {
-                      "description": {
-                        "content": "Audio format. If omitted, inferred from the audio_file extension.",
-                        "type": "text/plain"
-                      },
                       "key": "input_format",
                       "value": "<string>",
                       "type": "text"
                     },
                     {
-                      "description": {
-                        "content": "",
-                        "type": "text/plain"
-                      },
                       "key": "description",
                       "value": "<string>",
                       "type": "text"
                     },
                     {
-                      "description": {
-                        "content": "",
-                        "type": "text/plain"
-                      },
                       "key": "language",
                       "value": "<string>",
                       "type": "text"
                     },
                     {
-                      "description": {
-                        "content": "",
-                        "type": "text/plain"
-                      },
                       "key": "start_s",
                       "value": "0",
                       "type": "text"
                     },
                     {
-                      "description": {
-                        "content": "",
-                        "type": "text/plain"
-                      },
                       "key": "timeout_s",
                       "value": "10",
                       "type": "text"
                     }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/voices/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "voices",
+                    ""
                   ]
                 }
               },
               "status": "Created",
               "code": 201,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"uid\": \"string\",\n  \"error\": \"string\",\n  \"was_updated\": false\n}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"uid\": \"<string>\",\n  \"error\": \"<string>\",\n  \"was_updated\": false\n}",
+              "createdAt": "2026-10-22T02:21:02.000Z",
+              "updatedAt": "2026-10-22T02:21:02.000Z",
+              "uid": "35240-13c16c4d-abd3-4c6c-809f-01f846aa7624"
             },
             {
-              "id": "0c76a940-0a2a-4e22-b87a-9a24b6cf3c25",
+              "id": "b1d0ecc4-da26-4bed-a232-2f28ad156384",
               "name": "Validation Error",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "voices",
-                    ""
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
+                "method": "POST",
                 "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "multipart/form-data"
+                  },
                   {
                     "key": "Accept",
                     "value": "application/json"
                   }
                 ],
-                "method": "POST",
                 "body": {
                   "mode": "formdata",
                   "formdata": [
                     {
-                      "description": {
-                        "content": "(Required) ",
-                        "type": "text/plain"
-                      },
+                      "description": "(Required) ",
                       "key": "audio_file",
-                      "value": "<binary>",
-                      "type": "text"
+                      "type": "file"
                     },
                     {
-                      "description": {
-                        "content": "(Required) ",
-                        "type": "text/plain"
-                      },
+                      "description": "(Required) ",
                       "key": "name",
                       "value": "<string>",
                       "type": "text"
                     },
                     {
-                      "description": {
-                        "content": "Audio format. If omitted, inferred from the audio_file extension.",
-                        "type": "text/plain"
-                      },
                       "key": "input_format",
                       "value": "<string>",
                       "type": "text"
                     },
                     {
-                      "description": {
-                        "content": "",
-                        "type": "text/plain"
-                      },
                       "key": "description",
                       "value": "<string>",
                       "type": "text"
                     },
                     {
-                      "description": {
-                        "content": "",
-                        "type": "text/plain"
-                      },
                       "key": "language",
                       "value": "<string>",
                       "type": "text"
                     },
                     {
-                      "description": {
-                        "content": "",
-                        "type": "text/plain"
-                      },
                       "key": "start_s",
                       "value": "0",
                       "type": "text"
                     },
                     {
-                      "description": {
-                        "content": "",
-                        "type": "text/plain"
-                      },
                       "key": "timeout_s",
                       "value": "10",
                       "type": "text"
                     }
                   ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/voices/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "voices",
+                    ""
+                  ]
                 }
               },
               "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
               "code": 422,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"msg\": \"<string>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"loc\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"msg\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  ]\n}",
+              "createdAt": "2026-10-22T02:21:02.000Z",
+              "updatedAt": "2026-10-22T02:21:02.000Z",
+              "uid": "35240-b1d0ecc4-da26-4bed-a232-2f28ad156384"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "createdAt": "2026-10-22T02:21:02.000Z",
+          "updatedAt": "2026-10-22T02:21:02.000Z",
+          "uid": "35240-cf039807-7b4b-492c-9dc7-e32633f2ff73"
         },
         {
-          "id": "083d739b-285b-4073-ba9a-cdcbb4833753",
           "name": "Get Voices",
+          "id": "901753c3-4634-4539-ac00-1947f052a383",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
-            "name": "Get Voices",
-            "description": {
-              "content": "List voices for the authenticated organization.",
-              "type": "text/plain"
-            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
             "url": {
+              "raw": "{{baseUrl}}/voices/?skip=0&limit=100&include_catalog=false",
+              "host": [
+                "{{baseUrl}}"
+              ],
               "path": [
                 "voices",
                 ""
               ],
-              "host": [
-                "{{baseUrl}}"
-              ],
               "query": [
                 {
-                  "disabled": false,
                   "key": "skip",
                   "value": "0"
                 },
                 {
-                  "disabled": false,
                   "key": "limit",
                   "value": "100"
                 },
                 {
-                  "disabled": false,
                   "key": "include_catalog",
                   "value": "false"
                 }
-              ],
-              "variable": []
+              ]
             },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
+            "description": "List voices for the authenticated organization."
           },
           "response": [
             {
-              "id": "b6fe1f7f-ecfb-4858-a96f-b4edebd7a4d2",
+              "id": "70116aef-bc89-42b0-9cdf-6f9d41d09995",
               "name": "Successful Response",
               "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
                 "url": {
+                  "raw": "{{baseUrl}}/voices/?skip=0&limit=100&include_catalog=false",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
                   "path": [
                     "voices",
                     ""
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
                   ],
                   "query": [
                     {
@@ -371,41 +750,44 @@
                       "key": "include_catalog",
                       "value": "false"
                     }
-                  ],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
+                  ]
+                }
               },
               "status": "OK",
               "code": 200,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "[\n  {\n    \"uid\": \"string\",\n    \"name\": \"string\",\n    \"is_catalog\": true,\n    \"is_pro_clone\": true,\n    \"description\": \"string\",\n    \"filename\": \"string\",\n    \"start_s\": 4487.288511428087,\n    \"language\": \"string\"\n  },\n  {\n    \"uid\": \"string\",\n    \"name\": \"string\",\n    \"is_catalog\": false,\n    \"is_pro_clone\": false,\n    \"description\": \"string\",\n    \"filename\": \"string\",\n    \"start_s\": 1134.4765007399503,\n    \"language\": \"string\"\n  }\n]",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "[\n  {\n    \"uid\": \"<string>\",\n    \"name\": \"<string>\",\n    \"is_catalog\": \"<boolean>\",\n    \"is_pro_clone\": \"<boolean>\",\n    \"description\": \"<string>\",\n    \"filename\": \"<string>\",\n    \"start_s\": \"<number>\",\n    \"language\": \"<string>\"\n  },\n  {\n    \"uid\": \"<string>\",\n    \"name\": \"<string>\",\n    \"is_catalog\": \"<boolean>\",\n    \"is_pro_clone\": \"<boolean>\",\n    \"description\": \"<string>\",\n    \"filename\": \"<string>\",\n    \"start_s\": \"<number>\",\n    \"language\": \"<string>\"\n  }\n]",
+              "createdAt": "2026-10-22T02:21:02.000Z",
+              "updatedAt": "2026-10-22T02:21:02.000Z",
+              "uid": "35240-70116aef-bc89-42b0-9cdf-6f9d41d09995"
             },
             {
-              "id": "eb03492c-7114-4dbd-9797-20b5b3fa164e",
+              "id": "dd1f0a58-8076-444e-ad14-2dac44f0cc2e",
               "name": "Validation Error",
               "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
                 "url": {
+                  "raw": "{{baseUrl}}/voices/?skip=0&limit=100&include_catalog=false",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
                   "path": [
                     "voices",
                     ""
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
                   ],
                   "query": [
                     {
@@ -420,474 +802,41 @@
                       "key": "include_catalog",
                       "value": "false"
                     }
-                  ],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
-              "code": 422,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "d3f59950-c046-47e3-bc6d-0d09ac68a49e",
-          "name": "Get Voice",
-          "request": {
-            "name": "Get Voice",
-            "description": {
-              "content": "Get a voice by its UID. Optional org_uid and key_uid for access control.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "voices",
-                ":voice_uid"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "voice_uid",
-                  "description": "(Required) "
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "0f44fb8b-11f5-4c11-adc1-a34fe152b0aa",
-              "name": "Successful Response",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "voices",
-                    ":voice_uid"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "voice_uid",
-                      "description": "(Required) "
-                    }
                   ]
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"uid\": \"string\",\n  \"name\": \"string\",\n  \"is_catalog\": false,\n  \"is_pro_clone\": false,\n  \"description\": \"string\",\n  \"filename\": \"string\",\n  \"start_s\": 1939.0083672157054,\n  \"language\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "36f50317-0a7e-4096-87cf-e679d88217d1",
-              "name": "Validation Error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "voices",
-                    ":voice_uid"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "voice_uid",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
-              "code": 422,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "9c8acde4-b8a8-49b2-b595-9805133c0ba5",
-          "name": "Update Voice",
-          "request": {
-            "name": "Update Voice",
-            "description": {
-              "content": "Update a voice by its UID.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "voices",
-                ":voice_uid"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "voice_uid",
-                  "description": "(Required) "
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "PUT",
-            "auth": null,
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"language\": \"<string>\",\n  \"start_s\": \"<number>\",\n  \"tags\": [\n    {\n      \"key_0\": \"<string>\",\n      \"key_1\": \"<string>\"\n    },\n    {\n      \"key_0\": \"<string>\"\n    }\n  ],\n  \"rank\": \"<number>\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
-            {
-              "id": "30c8e006-fe4d-4bf5-8cba-880a26ac6ddd",
-              "name": "Successful Response",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "voices",
-                    ":voice_uid"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "voice_uid",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"language\": \"<string>\",\n  \"start_s\": \"<number>\",\n  \"tags\": [\n    {\n      \"key_0\": \"<string>\",\n      \"key_1\": \"<string>\",\n      \"key_2\": \"<string>\"\n    },\n    {\n      \"key_0\": \"<string>\",\n      \"key_1\": \"<string>\"\n    }\n  ],\n  \"rank\": \"<number>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"uid\": \"string\",\n  \"name\": \"string\",\n  \"start_s\": 4735.533687163419,\n  \"filename\": \"string\",\n  \"description\": \"string\",\n  \"language\": \"string\",\n  \"stop_s\": 7069.895156430522,\n  \"org_uid\": \"736d6485-60c4-7ca0-f329-c8111a940634\",\n  \"is_pending\": false,\n  \"has_audio\": true,\n  \"is_pro_clone\": false\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "63b16d1e-7d5b-47de-acfe-7209e0d6e225",
-              "name": "Validation Error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "voices",
-                    ":voice_uid"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "voice_uid",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"language\": \"<string>\",\n  \"start_s\": \"<number>\",\n  \"tags\": [\n    {\n      \"key_0\": \"<string>\",\n      \"key_1\": \"<string>\",\n      \"key_2\": \"<string>\"\n    },\n    {\n      \"key_0\": \"<string>\",\n      \"key_1\": \"<string>\"\n    }\n  ],\n  \"rank\": \"<number>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
                 }
               },
               "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
               "code": 422,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"msg\": \"<string>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"loc\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"msg\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  ]\n}",
+              "createdAt": "2026-10-22T02:21:02.000Z",
+              "updatedAt": "2026-10-22T02:21:02.000Z",
+              "uid": "35240-dd1f0a58-8076-444e-ad14-2dac44f0cc2e"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "d774f1bb-7db4-4916-81e6-4865fa670dc7",
-          "name": "Delete Voice",
-          "request": {
-            "name": "Delete Voice",
-            "description": {
-              "content": "Delete a voice by its UID.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "voices",
-                ":voice_uid"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "voice_uid",
-                  "description": "(Required) "
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "DELETE",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "79ee4c2e-0782-4e58-9e7e-378806315f05",
-              "name": "Successful Response",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "voices",
-                    ":voice_uid"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "voice_uid",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "No Content",
-              "code": 204,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "0701c5df-1aab-4489-ba96-182d6cf9c856",
-              "name": "Validation Error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "voices",
-                    ":voice_uid"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "voice_uid",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
-              "code": 422,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "createdAt": "2026-10-22T02:21:02.000Z",
+          "updatedAt": "2026-10-22T02:21:02.000Z",
+          "uid": "35240-901753c3-4634-4539-ac00-1947f052a383"
         }
       ],
-      "event": []
+      "id": "5a613d4f-a3f7-41d7-bf33-d90359c3a226",
+      "createdAt": "2026-10-22T02:21:02.000Z",
+      "updatedAt": "2026-10-22T02:21:02.000Z",
+      "uid": "35240-5a613d4f-a3f7-41d7-bf33-d90359c3a226"
     }
   ],
-  "event": [],
   "variable": [
     {
-      "type": "string",
-      "value": "https://api.gradium.ai/api",
-      "key": "baseUrl"
+      "key": "baseUrl",
+      "value": "https://api.gradium.ai/api"
     }
-  ],
-  "info": {
-    "_postman_id": "50d94c81-f413-45df-98b3-a2b57f113815",
-    "name": "Gradium metering Voices API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "This documentation covers the Gradium API.\n\nThis API exposes our Text-To-Speech and Speech-To-Text models, which offers low-latency, high-quality & natural sounding output and best in class accuracy.  \n\nFor issues, questions, or feature requests, please contact us at support@gradium.ai",
-      "type": "text/plain"
-    }
-  }
+  ]
 }
