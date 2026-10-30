@@ -64,16 +64,139 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Gradium is a voice AI lab (Paris and Silicon Valley) building audio language models for real-time, low-latency Text-to-Speech, Speech-to-Text, and Speech-to-Speech translation. Founded in 2025 by ex-DeepMind / Meta / Kyutai researchers, it exposes a developer API over REST and WebSocket with instant voice cloning, custom pronunciation dictionaries, and multilingual support (EN, FR, DE, ES, PT).
+Gradium is a voice AI lab (Paris and Silicon Valley) building audio language models for real-time, low-latency Text-to-Speech, Speech-to-Text, and Speech-to-Speech translation. Founded in 2025 by ex-DeepMind / Meta / Kyutai researchers (Neil Zeghidour, Olivier Teboul, Laurent Mazaré, Alexandre Défossez), Gradium exposes a developer API over REST and WebSocket featuring instant voice cloning from a 10-second sample, custom pronunciation dictionaries, sub-300ms time-to-first-token streaming, and multilingual support (English, French, German, Spanish, Portuguese). It ships first-party Python and Rust SDKs, a `gradium` CLI, and the open-source gradbot voice-agent framework, and is available on AWS Marketplace / SageMaker. Backed by a $70M seed round with participation from Amplify Partners, Eric Schmidt, and Xavier Niel.
 
-- Website: https://gradium.ai
-- Docs: https://docs.gradium.ai/
-- API reference: https://docs.gradium.ai/api-reference/introduction
-- OpenAPI: https://docs.gradium.ai/api-reference/openapi.json
-- GitHub: https://github.com/gradium-ai
-- SDKs: Python (`pip install gradium`), Rust (`cargo add gradium`)
-- Status: https://gradium.statuspage.io/ · Trust: https://trust.gradium.ai/
+**Areas:** Company · Artificial Intelligence · Voice AI · Text-to-Speech · Speech-to-Text · Speech to Speech · Voice Cloning · Audio · Real-Time Streaming · WebSocket · Developer API · Voice Agents
 
-Backed by: amplify-partners (plus Eric Schmidt, Xavier Niel; $70M seed).
+## Gradium on APIs.io
 
-This profile was enriched by the API Evangelist enrichment pipeline (2026-07-19).
+Everything profiled for Gradium is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/gradium/](https://apis.io/providers/gradium/)** — or go straight to one of the APIs or properties below.
+
+### APIs (6)
+
+- [Gradium Metering API](https://apis.io/apis/gradium/gradium-metering-api/) — The metering API from Gradium — 1 operation(s) for metering.
+- [Gradium Pronunciations API](https://apis.io/apis/gradium/gradium-pronunciations-api/) — Manage pronunciation dictionaries for custom text rewriting
+- [Gradium S2S API](https://apis.io/apis/gradium/gradium-s2s-api/) — The S2S API from Gradium — 1 operation(s) for s2s.
+- [Gradium STT API](https://apis.io/apis/gradium/gradium-stt-api/) — Speech-to-Text endpoints for converting audio to text
+- [Gradium TTS API](https://apis.io/apis/gradium/gradium-tts-api/) — Text-to-Speech endpoints for converting text to audio
+- [Gradium Voices API](https://apis.io/apis/gradium/gradium-voices-api/) — Manage custom voice clones
+
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### AsyncAPI (1)
+
+Event-driven and webhook contracts.
+
+- [Gradium Speech Streaming API](https://apis.io/asyncapis/gradium/gradium-speech-asyncapi/)
+
+#### Event channels (3)
+
+Individual events and webhooks the provider emits.
+
+- [/speech/asr](https://apis.io/channels/gradium/speech-asr/)
+- [/speech/s2s](https://apis.io/channels/gradium/speech-s2s/)
+- [/speech/tts](https://apis.io/channels/gradium/speech-tts/)
+
+#### MCP servers (1)
+
+Model Context Protocol servers that expose the API to agents.
+
+- [gradium](https://apis.io/servers/gradium/gradium/)
+
+#### Collections (6)
+
+Postman and Open Collection request collections.
+
+- [Gradium metering API](https://apis.io/collections/gradium/open-gradium-metering-api/)
+- [Gradium metering Pronunciations API](https://apis.io/collections/gradium/open-gradium-pronunciations-api/)
+- [Gradium metering S2S API](https://apis.io/collections/gradium/open-gradium-s2s-api/)
+- [Gradium metering STT API](https://apis.io/collections/gradium/open-gradium-stt-api/)
+- [Gradium metering TTS API](https://apis.io/collections/gradium/open-gradium-tts-api/)
+- [Gradium metering Voices API](https://apis.io/collections/gradium/open-gradium-voices-api/)
+
+#### Overlays (1)
+
+OpenAPI overlays, including conversational phrasing for each operation.
+
+- [Gradium Openapi Overlay](https://apis.io/overlays/gradium/gradium-openapi-overlay/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Gradium Authentication](https://apis.io/security/gradium/gradium-authentication/)
+- [Gradium Domain Security](https://apis.io/security/gradium/gradium-domain-security/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://gradium.ai)
+- [Documentation](https://docs.gradium.ai/)
+- [Getting started](https://docs.gradium.ai/guides/installation)
+- [API reference](https://docs.gradium.ai/api-reference/introduction)
+- [Pricing](https://gradium.ai/pricing)
+- [Sign up](https://studio.gradium.ai/platform/subscription)
+- [Blog](https://gradium.ai/blog)
+- [Trust centre](https://trust.gradium.ai/)
+- [Terms of service](https://www.gradium.ai/terms-of-service)
+- [Privacy policy](https://www.gradium.ai/privacy)
+- [GitHub](https://github.com/gradium-ai)
+- [Status](https://gradium.statuspage.io/)
+
+## API Evangelist rating
+
+**Kin Score 47.0** — developing · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 73.2 |
+| Contract quality | 53.0 |
+| Contract governance | 4.5 |
+| Operational transparency | 34.2 |
+| Developer ergonomics | 78.0 |
+| Access clarity | 31.6 |
+
+**Agent readiness 29.8** — agent-ready
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | — |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | verified |
+| OpenAPI Examples | — |
+| Rate Limit Signal | documented (partial credit) |
+| Event Surface Described | derived (partial credit) |
+| Agent Skills | derived (partial credit) |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | paginated |
+| Operation Distinctiveness | distinct |
+
+**Regulatory alignment 19.3** — AI & Biometrics
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/gradium/](https://apis.io/providers/gradium/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Gradium: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/gradium/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
